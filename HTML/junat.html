@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <style>
-        .hide{
-            display: none;
-        }
-    </style>
+
     <meta charset="UTF-8">
     <title>Juna-aikataulu</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
+    <style>
+        .hide{
+            display: none;
+        }
+        ul li p{
+            margin-bottom: 0;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -34,8 +39,9 @@
     </p>
 </div>
 </p>
-<ol id="trainlist"></ol>
+<!--<ol id="trainlist"></ol>-->
 
+<ul id="trainlist"></ul>
 
 <script src="../JS/junat.js"></script>
 
