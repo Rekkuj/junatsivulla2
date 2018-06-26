@@ -13,40 +13,23 @@
 <p>
 <h3>Lähtöasema</h3>
 <div>
-    <!--<select id="lahtoAsema">-->
-    <!--</select>-->
-    <input id = "lahtoAsema">
+    <input id = fromSt>
 </div>
 <br>
 <h3>Pääteasema</h3>
 <div>
     <div>
-        <!--<select id="paateAsema">-->
-        <!--</select>-->
-        <input id = "paateAsema">
+        <input id = "toSt">
     </div>
 </div>
 <div>
-    <!--<input type="text" id=paateAsema value=LH> <br>-->
     <p>
-        <input type=button id="hakunappi" onclick="haedata()" value="Hae junat">
+        <input type=button id="search" onclick="getTrains()" value="Hae junat">
     </p>
 </div>
 </p>
-<ol id=junalistaus></ol>
+<ol id="trainlist"></ol>
 
-<!--<ul>-->
-    <!--<il class="ali"><ol>-->
-        <!--<il>pöö<br></il>-->
-        <!--<il>pöö</il>-->
-        <!--<il>pöö</il>-->
-    <!--</ol></il>-->
-    <!--<il><ol>-->
-        <!--<il>hui</il>-->
-        <!--<il>hui</il>-->
-        <!--<il>hui</il>-->
-    <!--</ol></il>-->
-<!--</ul>-->
 
 <script src="../JS/junat.js"></script>
 
