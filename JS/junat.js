@@ -2,6 +2,7 @@ var listOfTrains = document.getElementById("trainlist");
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
 var timeSettings = {hour: "2-digit", minute: '2-digit', hour12: false};
+var dateSettings = {weekday: 'short', day: 'numeric', month: 'numeric'};
 
 
 var req = new XMLHttpRequest();
@@ -92,15 +93,23 @@ function addToList(table) {
 
     for (var i = 0; i < lengthOrMax; i++) {
         var train = table[i];
+        console.log(train.timeTableRows[0].departureDate);
+        var departureDate = new Date(train.departureDate);
         var departureTime = new Date(train.timeTableRows[0].scheduledTime);
         var arrivalTime = new Date(train.timeTableRows[train.timeTableRows.length - 1].scheduledTime);
 
         var idouter = "train" + i;
 
         $("<li></li>", {id: idouter})
+            .css('display','block')
+            .append(fromSt.value + " - " + toSt.value + ": ")
             .append(train.trainType + train.trainNumber
-                + ", Lähtöaika: " + departureTime.toLocaleTimeString('fi', timeSettings)
-                + ", Saapumisaika: " + arrivalTime.toLocaleTimeString('fi', timeSettings))
+                + "<br>Lähtö: " + departureDate.toLocaleDateString('fi',dateSettings)
+                + " klo. " + departureTime.toLocaleTimeString('fi', timeSettings)
+                + "<br>Saapumisaika: " + arrivalTime.toLocaleTimeString('fi', timeSettings))
+            .click(function () {
+                $(this.childNodes).toggleClass("hide");
+            })
             .appendTo(listOfTrains);
 
         printTableRow(idouter, train, i);
@@ -110,15 +119,15 @@ function addToList(table) {
 
 function printTableRow(idouter, train, i) {
     var trainId = train.trainNumber + train.trainType + i;
-    $("<ul></ul>", {id: trainId}).appendTo(document.getElementById(idouter));
-    outer:
+    $("<ul></ul>", {id: trainId}).addClass("hide").appendTo(document.getElementById(idouter));
+
         for (var j = 1; j < train.timeTableRows.length; j = j + 2) {
 
             if (stationShortCodes.indexOf(train.timeTableRows[j].stationShortCode) < 0) {
-                continue outer;
+                continue;
             }
-            if (train.timeTableRows[j].trainStopping == false) {
-                continue outer;
+            if (train.timeTableRows[j].trainStopping === false) {
+                continue;
             }
             var stationCode = train.timeTableRows[j].stationShortCode;
             var index = stationShortCodes.indexOf(stationCode);
@@ -128,12 +137,9 @@ function printTableRow(idouter, train, i) {
                 + ": "
                 + departureTime.toLocaleTimeString('fi', timeSettings))
                 .appendTo(document.getElementById(trainId));
-            if (train.timeTableRows[j].stationShortCode == stationInfo[toSt.value].shortCode) {
-                break outer;
+            if (train.timeTableRows[j].stationShortCode === stationInfo[toSt.value].shortCode) {
+                break;
             }
         }
-
 }
-
-
 
