@@ -8,26 +8,26 @@
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
 </head>
 <body>
-
+<img src="../mer_300.png">
 
 <h1>Junahaku</h1>
-<p>
 <fieldset>
-<h4>Lähtöasema</h4>
 <div>
+<h4>Lähtöasema</h4>
     <input id = "fromSt" class="input" placeholder="Valitse asema">
 </div>
-<h4>Pääteasema</h4>
 <div>
+<h4>Pääteasema</h4>
     <input id = "toSt" class="input" placeholder="Valitse asema">
 </div>
 <div>
     <p>
-        <input type=button id="search" onclick="getTrains()" value="Hae junat">
+    <button type=button id="search" onclick="getTrains()" value="getTrains">Hae junat</button>
+    <button type=button id="delcookies" onclick="deleteCookies()" value="delCookies">Tyhjennä haku</button>
     </p>
 </div>
-</p>
 </fieldset>
+</p>
 <fieldset>
 <ol id=trainlist></ol>
 
@@ -37,6 +37,6 @@
 
 <script src="../JS/junat.js"></script>
 
-
+<footer>© MER 2018</footer>
 </body>
 </html>
