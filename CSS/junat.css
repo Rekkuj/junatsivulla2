@@ -10,10 +10,10 @@ h1 {
     font-family: Arial;
 }
 
-h3 {
+h2 {
     background-color: white;
-    color: fuchsia;
-    width: 95%;
+    color: black;
+    width: 90%;
     margin-left: 2px;
     border-radius: 12px;
     padding: 20px;
@@ -27,3 +27,8 @@ fieldset {
     text-align: justify;
     font-family: Arial;
 }
+
+ul {
+    color: fuchsia;
+}
+
