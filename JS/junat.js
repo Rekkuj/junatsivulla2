@@ -89,7 +89,7 @@ function getTrains() {
 
 function addToList(table) {
 
-    var lengthOrMax = Math.min(table.length, 8);
+    var lengthOrMax = Math.min(table.length, 5);
 
     for (var i = 0; i < lengthOrMax; i++) {
         var train = table[i];
