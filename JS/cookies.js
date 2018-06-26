@@ -15,14 +15,17 @@ function saveCookies() {
         cookieString = key + "=" +myCookies[key]+";"+expires+";";
         document.cookie = cookieString;
     }
-    console.log("Cookies saved");
     console.log(document.cookie);
+    console.log("Cookies saved");
+    console.log(myCookies)
 }
 
 function loadCookies() {
     console.log("loading cookies");
+    console.log(myCookies)
     if (myCookies === undefined || myCookies.length == 0) {
         return false;
+        console.log("TThheeeeeeeere is noooooooooo coookies")
     }
     myCookies = {};
     var kv = document.cookie.split(";");
@@ -34,14 +37,20 @@ function loadCookies() {
     document.getElementById("toSt").value = myCookies ["_toSt"];
 }
 
-function deleteCookies() {
-    console.log("Cookies will be removed")
-    var exCookies = myCookies;
-    var size = exCookies.getLength();
-    for (var i = 0; i < size; i++) {
-        delete myCookies[i]
-    }
-    console.log("Cookies removed")
-}
+// function deleteCookies() {
+//     console.log("Cookies will be removed")
+
+    // delete myCookies['_fromSt'];
+    // delete myCookies ['_toSt'];
+    // for (var i = 0; i < myCookies.length; i++) {
+    //     delete myCookies.v
+    // }
+//     while (listOfTrains.firstChild) {
+//         listOfTrains.removeChild(listOfTrains.firstChild);
+//     }
+//     //window.location = "";
+//     console.log("Cookies removed")
+//     console.log(myCookies)
+// }
 
 

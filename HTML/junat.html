@@ -12,7 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
 </head>
-<body>
+<body onload="loadCookies()">
+<script src="../JS/cookies.js"></script>
 <img src="../mer_300.png">
 
 <h1>Junahaku</h1>
@@ -28,8 +29,8 @@
 <div>
     <p>
 
-    <button type=button id="search" onclick="getTrains()" value="getTrains">Hae junat</button>
-    <button type=button id="delcookies" onclick="deleteCookies()" value="delCookies">Tyhjennä haku</button>
+    <button type=button id="search" onclick="getTrains(), saveCookies()" value="getTrains">Hae junat</button>
+    <button type=button id="clearInputBoxes" onclick="document.getElementById('fromSt').value = '', document.getElementById('toSt').value = ''">Tyhjennä haku</button>
 
     </p>
 </div>
