@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>Juna-aikataulu</title>
+    <link rel="stylesheet" href="../CSS/junat.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
 </head>
@@ -11,42 +17,29 @@
 
 <h1>Junahaku</h1>
 <p>
-<h3>Lähtöasema</h3>
+<fieldset>
+<h4>Lähtöasema</h4>
 <div>
-    <!--<select id="lahtoAsema">-->
-    <!--</select>-->
-    <input id = "lahtoAsema">
+    <input id = "fromSt" class="input" placeholder="Valitse asema">
 </div>
-<br>
-<h3>Pääteasema</h3>
+<h4>Pääteasema</h4>
 <div>
-    <div>
-        <!--<select id="paateAsema">-->
-        <!--</select>-->
-        <input id = "paateAsema">
-    </div>
+    <input id = "toSt" class="input" placeholder="Valitse asema">
 </div>
 <div>
-    <!--<input type="text" id=paateAsema value=LH> <br>-->
     <p>
-        <input type=button id="hakunappi" onclick="haedata()" value="Hae junat">
+
+        <input type=button id="search" onclick="getTrains()" value="Hae junat">
     </p>
 </div>
 </p>
-<ol id=junalistaus></ol>
+</fieldset>
+<fieldset>
+<ol id=trainlist></ol>
 
-<!--<ul>-->
-    <!--<il class="ali"><ol>-->
-        <!--<il>pöö<br></il>-->
-        <!--<il>pöö</il>-->
-        <!--<il>pöö</il>-->
-    <!--</ol></il>-->
-    <!--<il><ol>-->
-        <!--<il>hui</il>-->
-        <!--<il>hui</il>-->
-        <!--<il>hui</il>-->
-    <!--</ol></il>-->
-<!--</ul>-->
+
+</fieldset>
+
 
 <script src="../JS/junat.js"></script>
 
