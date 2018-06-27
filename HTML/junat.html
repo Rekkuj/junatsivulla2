@@ -2,42 +2,43 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juna-aikataulu</title>
     <link rel="stylesheet" href="../CSS/junat.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
 
 </head>
-<!--<body onload=resetStations()>-->
 <body onload=loadCookies()>
 <script src="../JS/cookies.js"></script>
 <img src="../mer_300.png">
-
+<div class="login">
+<input type="text" id="user" placeholder="Käyttäjätunnus">
+<input type="password" id="pass" placeholder="Salasana">
+<input type="button" class="loginbutton" value="Kirjaudu sisään" onclick="login()">
+</div>
 <h1>Juna-aikataulu</h1>
-<input type="text" id="user" placeholder="Käyttis">
-<input type="password" id="pass" placeholder="passu">
-<input type="button" value="Log in" onclick="login()">
+
 <fieldset>
 <div>
 <h4>Lähtöasema</h4>
-    <select id = "fromSt" class="input">    </select>
-</div>
-<div>
+    <input id = "fromSt" class="input" placeholder="Valitse lähtöasema">
+
 <h4>Pääteasema</h4>
-    <select id = "toSt" class="input">    </select>
+    <input id = "toSt" class="input" placeholder="Valitse pääteasema">
+
 </div>
+
 <div>
-    <p>
 
-    <button type=button id="search" onclick="getTrains(), saveCookies()" value="getTrains">Hae junat</button>
-    <button type=button id="clearInputBoxes" onclick=resetStations()>Tyhjennä haku</button>
-
-    </p>
+    <button type=button id="search" onclick="getTrains(), saveCookies()" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='button'" value="getTrains">Hae junat</button>
+    <button type=button id="clearInputBoxes" onclick=resetStations() class="scales" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='scales'">Tyhjennä haku</button>
 </div>
-
 
 </fieldset>
+
 <br>
+
 <fieldset>
 <div id="trainlist" class="trainlist"></div>
 </fieldset>

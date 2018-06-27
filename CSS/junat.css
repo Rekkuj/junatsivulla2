@@ -1,12 +1,44 @@
+
 body {
-    width: 800px;
+    width: 90%;
+    max-width: 800px;
     margin: auto;
+}
+
+img {
+    alignment: left;
+}
+
+.login {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login input{
+    margin-left: 2px;
+    border-color: #AC1556;
+}
+
+.loginbutton {
+    background-color: #AC1556;
+    margin-right: 5px;
+    border-radius: 8px;
+    width: 100px;
+    height: 22px;
+    color: white;
+    font-size: x-small;
+    font-weight: bolder;
+    align-content: center
+}
+
+p {
+    alignment: right;
 }
 
 h1 {
     background-color: #AC1556;
     color: white;
-    margin-left: 2px;
+    margin-top: 5px;
     border-color: white;
     border-style: solid;
     border-radius: 12px;
@@ -16,7 +48,8 @@ h1 {
 
 h4 {
     color: black;
-    margin-left: 2px;
+    margin-top: 5px;
+    margin-bottom: 4px;
     border-radius: 12px;
     font-family: Arial;
 }
@@ -46,17 +79,22 @@ div p span {
     font-size: medium;
 }
 
-div p span:hover {
+div p:hover {
     font-weight: bold;
-    font-style: italic;
+    transform: scale(1.05, 1.05);
+    -moz-transform: scale(1.05, 1.05);
+    -ms-transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    -o-transform: scale(1.05, 1.05);
 }
 
-p {
+div p {
     font-size: smaller;
 }
 
 button {
     background-color: #AC1556;
+    border-radius: 12px;
     width: 140px;
     height: 40px;
     color: white;
@@ -69,12 +107,32 @@ button {
     border-color: #AC1556;
     width: 280px;
     height: 30px;
-    font-family: Arial;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.input:focus {
+
+}
+
+.scaleOn {
+    /*General*/
+    transform: scale(1.05, 1.05);
+    /*Firefox*/
+    -moz-transform: scale(1.05, 1.05);
+    /*Microsoft Internet Explorer*/
+    -ms-transform: scale(1.05, 1.05);
+    /*Chrome, Safari*/
+    -webkit-transform: scale(1.05, 1.05);
+    /*Opera*/
+    -o-transform: scale(1.05, 1.05);
 }
 
 footer {
     font-size: small;
-    text-align: justify;
+    text-align: center;
+    color: #AC1556;
     font-family: Arial;
+
 }
 
