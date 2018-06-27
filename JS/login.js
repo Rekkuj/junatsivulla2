@@ -1,53 +1,47 @@
-var users = {};
-// var un = document.getElementById("user");
-// var pw = document.getElementById("pass");
+var loginMap = new Map();
+var user;
+var pass;
+
+function setNewUserToMap() {
+    user = document.getElementById("user");
+    pass = document.getElementById("pass");
+
+    console.log(user + pass);
+
+    //Caesar function??
+    // for (var [key, value] of loginMap) {
+    //     console.log(key + ' = ' + value);
+    // }
+
+    for (var key of loginMap.keys()) {
+        console.log(key);
+        if(key.contains(user)) {
+            console.log("name is already used")
+            return alert("Username is alreade used"),clearNameAndPass();
+        }
+
+    }
+
+    loginMap.set(user.value, pass.value);
+    console.log("User and pass saved")
+    console.log(loginMap);
+    clearNameAndPass();
+    console.log("User and password fields")
+}
+
+function clearNameAndPass() {
+    user.value='';
+    pass.value='';
+}
 
 function login() {
+    var user = document.getElementById("user");
+    var pass = document.getElementById("pass");
 
-    var user = document.getElementById('username');
-    var pass = document.getElementById('password');
-
-    var testuser = "testi";
-    var testpass = "testisalaus";
-    console.log("Data saved" + user.value + pass.value)
-
-
-    if (user.value == testuser) {
-
-        if (pass.value == testpass) {
-
-            window.confirm("You are logged in as " + user.value + "Click ok to continue");
-        } else {
-
-            window.confirm("Username or Password is incorrect \nPlease check username and password(click cancel)"  );
+    for (var [key, value] of loginMap) {
+        if(key.contains(user)) {
+            console.log(user.getName());
         }
-    } else { window.confirm("Username or Password is incorrect \n" +
-            "Please check your username and password(click cancel)\n" +
-            "Click ok, if you want to ergister as a user"  );
     }
 
 }
-
-function saveUser() {
-    users["_user"] = document.getElementById("username").value;
-    users["_pass"] = document.getElementById("password").value;
-    console.log("getElementById")
-    if (users["_user"] == null || users["_pass"] == null) {
-        return alert("Tarkista täytetyt tiedot");
-    }
-    console.log(users)
-
-    document.user = "";
-    var expires = new Date(Date.now()+24*60*60*1000).toString();
-    console.log("Expiring date")
-    var userString = "";
-    for (var key in users) {
-        userString = key + "=" +users[key]+";"+expires+";";
-        document.user = userString;
-    }
-    console.log(document.user);
-    console.log("User saved");
-    console.log(users)
-}
-
-
