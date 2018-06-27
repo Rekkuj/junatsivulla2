@@ -12,13 +12,13 @@ function login() {
 
         if (pass.value == testpass) {
 
-            window.alert("You are logged in as " + user.value);
+            window.confirm("You are logged in as " + user.value + "Click ok to continue");
         } else {
 
-            window.alert("Go home, you're drunk!");
+            window.confirm("Username or Password is incorrect \nPlease check username and password(click cancel)"  );
         }
     } else {
-        window.alert("Go home, you're drunk!")
+        window.confirm("Username or Password is incorrect \nPlease check your username and password(click cancel)\nClick ok, if you want to ergister as a user"  );
     }
 
 }

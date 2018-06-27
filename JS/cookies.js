@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var myCookies = {};
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
