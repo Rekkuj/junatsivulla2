@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
+
+    <style>
+
+        ul li p{
+            margin-bottom: 0;
+        }
+
+    </style>
+
     <meta charset="UTF-8">
     <title>Juna-aikataulu</title>
     <link rel="stylesheet" href="../CSS/junat.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
+
 </head>
 <body>
 <img src="../mer_300.png">
@@ -26,15 +36,14 @@
     <button type=button id="delcookies" onclick="deleteCookies()" value="delCookies">Tyhjennä haku</button>
     </p>
 </div>
+
 </fieldset>
 </p>
 <fieldset>
-<ol id=trainlist></ol>
-
-
+<ul id="trainlist"></ul>
 </fieldset>
 
-
+<script src="../JS/distance.js"></script>
 <script src="../JS/junat.js"></script>
 
 <footer>© MER 2018</footer>
