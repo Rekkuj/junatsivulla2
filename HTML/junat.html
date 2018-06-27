@@ -8,16 +8,15 @@
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
 
 </head>
-<<<<<<< HEAD
-<body onload="loadCookies()">
-=======
 <!--<body onload=resetStations()>-->
 <body onload=loadCookies()>
->>>>>>> 8b608eea04cded277b82010507e8c5046992cdab
 <script src="../JS/cookies.js"></script>
 <img src="../mer_300.png">
 
 <h1>Juna-aikataulu</h1>
+<input type="text" id="user" placeholder="Käyttis">
+<input type="password" id="pass" placeholder="passu">
+<input type="button" value="Log in" onclick="login()">
 <fieldset>
 <div>
 <h4>Lähtöasema</h4>
@@ -29,15 +28,10 @@
 </div>
 <div>
     <p>
-<<<<<<< HEAD
 
-    <button type=button id="search" onclick="getTrains(), saveCookies()" value="getTrains">Hae junat</button>
-    <button type=button id="clearInputBoxes" onclick="document.getElementById('fromSt').value = '', document.getElementById('toSt').value = ''">Tyhjennä haku</button>
-
-=======
     <button type=button id="search" onclick="getTrains(), saveCookies()" value="getTrains">Hae junat</button>
     <button type=button id="clearInputBoxes" onclick=resetStations()>Tyhjennä haku</button>
->>>>>>> 8b608eea04cded277b82010507e8c5046992cdab
+
     </p>
 </div>
 
@@ -49,6 +43,7 @@
 
 <script src="../JS/distance.js"></script>
 <script src="../JS/junat.js"></script>
+<script src="../JS/login.js"></script>
 
 <footer>© MER 2018</footer>
 </body>
