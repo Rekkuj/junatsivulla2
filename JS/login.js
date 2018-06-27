@@ -1,7 +1,11 @@
+var users = {};
+// var un = document.getElementById("user");
+// var pw = document.getElementById("pass");
+
 function login() {
 
-    var user = document.getElementById('user');
-    var pass = document.getElementById('pass');
+    var user = document.getElementById('username');
+    var pass = document.getElementById('password');
 
     var testuser = "testi";
     var testpass = "testisalaus";
@@ -17,20 +21,20 @@ function login() {
 
             window.confirm("Username or Password is incorrect \nPlease check username and password(click cancel)"  );
         }
-    } else {
-        window.confirm("Username or Password is incorrect \nPlease check your username and password(click cancel)\nClick ok, if you want to ergister as a user"  );
+    } else { window.confirm("Username or Password is incorrect \n" +
+            "Please check your username and password(click cancel)\n" +
+            "Click ok, if you want to ergister as a user"  );
     }
 
 }
 
-var users = {};
-// var un = document.getElementById("user");
-// var pw = document.getElementById("pass");
-
 function saveUser() {
-    users["_user"] = document.getElementById("user").value;
-    users["_pass"] = document.getElementById("pass").value;
+    users["_user"] = document.getElementById("username").value;
+    users["_pass"] = document.getElementById("password").value;
     console.log("getElementById")
+    if (users["_user"] == null || users["_pass"] == null) {
+        return alert("Tarkista täytetyt tiedot");
+    }
     console.log(users)
 
     document.user = "";
