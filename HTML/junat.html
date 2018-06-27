@@ -2,35 +2,34 @@
 <html lang="fi">
 <head>
 
-    <meta charset="UTF-8">
-    <title>Juna-aikataulu</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
     <style>
-        .hide{
-            display: none;
-        }
+
         ul li p{
             margin-bottom: 0;
         }
 
     </style>
+
+    <meta charset="UTF-8">
+    <title>Juna-aikataulu</title>
+    <link rel="stylesheet" href="../CSS/junat.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
+
 </head>
 <body>
 
 
 <h1>Junahaku</h1>
 <p>
-<h3>Lähtöasema</h3>
+<fieldset>
+<h4>Lähtöasema</h4>
 <div>
-    <input id = fromSt>
+    <input id = "fromSt" class="input" placeholder="Valitse asema">
 </div>
-<br>
-<h3>Pääteasema</h3>
+<h4>Pääteasema</h4>
 <div>
-    <div>
-        <input id = "toSt">
-    </div>
+    <input id = "toSt" class="input" placeholder="Valitse asema">
 </div>
 <div>
     <p>
@@ -39,9 +38,11 @@
     </p>
 </div>
 </p>
-<!--<ol id="trainlist"></ol>-->
 
+</fieldset>
+<fieldset>
 <ul id="trainlist"></ul>
+</fieldset>
 
 <script src="../JS/distance.js"></script>
 <script src="../JS/junat.js"></script>
