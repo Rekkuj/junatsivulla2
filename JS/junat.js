@@ -1,6 +1,7 @@
 var listOfTrains = document.getElementById("trainlist");
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
+var fin = 'fi';
 var timeSettings = {hour: "2-digit", minute: '2-digit', hour12: false};
 var dateSettings = {weekday: 'short', day: 'numeric', month: 'numeric'};
 
@@ -11,6 +12,20 @@ var req2 = new XMLHttpRequest();
 var stationNames = [];
 var stationShortCodes = [];
 var stationInfo = {};
+
+/** Function read's info of all stations and
+ * create's two lists and an object.
+ *    - only stations with passenger traffic
+ * Lists: stationNames and stationShortCodes.
+ * Object: key - Station name, properties - shortCode, longitude, latitude, stationCode (numeric)
+ * */
+
+function getAllStations() {
+    req.open('GET', 'https://rata.digitraffic.fi/api/v1/metadata/stations', true);
+    req.send(null);
+}
+
+getAllStations();
 
 req.onreadystatechange = function () {
     if (req.readyState === 4) {
@@ -56,13 +71,6 @@ req.onreadystatechange = function () {
     }
 }
 
-function getAllStations() {
-    req.open('GET', 'https://rata.digitraffic.fi/api/v1/metadata/stations', true);
-    req.send(null);
-}
-
-getAllStations();
-
 req2.onreadystatechange = function () {
     if (req2.readyState === 4) {
         if (req2.status === 200) {
@@ -72,12 +80,16 @@ req2.onreadystatechange = function () {
             var trainTable = JSON.parse(req2.responseText);
             console.log(trainTable);
             addToList(trainTable);
+            console.log(distance(stationInfo[fromSt.value],stationInfo[toSt.value]));
         } else {
             alert("Lataaminen epäonnistui.");
         }
     }
 }
 
+/** Function get's trains between two stations
+ *
+ * */
 
 function getTrains() {
     var url = 'https://rata.digitraffic.fi/api/v1/live-trains/station/'
@@ -86,6 +98,7 @@ function getTrains() {
     req2.send(null);
 }
 
+/** Add a list of trains between two spesific stations to HTML-page */
 
 function addToList(table) {
 
@@ -93,53 +106,91 @@ function addToList(table) {
 
     for (var i = 0; i < lengthOrMax; i++) {
         var train = table[i];
-        console.log(train.timeTableRows[0].departureDate);
+
+        // Find a indeces of fromSt and toSt from the timeTableRows
+        var indexOfDeparture;
+        var indexOfArriving;
+
+        for (var j = 0; j < train.timeTableRows.length; j++) {
+            //fromSt
+            if (train.timeTableRows[j].stationShortCode === stationInfo[fromSt.value].shortCode){
+                if (j===0) {
+                    indexOfDeparture = j;
+                } else{
+                    indexOfDeparture = j+1;
+                    j++; //Index of leaving the station
+                }
+            }
+            //toSt
+            if (train.timeTableRows[j].stationShortCode === stationInfo[toSt.value].shortCode) {
+                indexOfArriving = j;
+                break;
+            }
+        }
+
+
         var departureDate = new Date(train.departureDate);
-        var departureTime = new Date(train.timeTableRows[0].scheduledTime);
-        var arrivalTime = new Date(train.timeTableRows[train.timeTableRows.length - 1].scheduledTime);
+        var departureTime = new Date(train.timeTableRows[indexOfDeparture].scheduledTime);
+        var arrivalTime = new Date(train.timeTableRows[indexOfArriving].scheduledTime);
 
         var idouter = "train" + i;
 
-        $("<li></li>", {id: idouter})
-            .css('display','block')
-            .append(fromSt.value + " - " + toSt.value + ": ")
-            .append(train.trainType + train.trainNumber
+        $("<p></p>", {id: idouter})
+            .append("<span>" + fromSt.value + " - " + toSt.value + ": " + train.trainType + train.trainNumber + "</span>"
                 + "<br>Lähtö: " + departureDate.toLocaleDateString('fi',dateSettings)
-                + " klo. " + departureTime.toLocaleTimeString('fi', timeSettings)
-                + "<br>Saapumisaika: " + arrivalTime.toLocaleTimeString('fi', timeSettings))
+                + " klo " + departureTime.toLocaleTimeString('fi',timeSettings)
+                + "<br>Perillä: " + arrivalTime.toLocaleTimeString('fi', timeSettings))
             .click(function () {
-                $(this.childNodes).toggleClass("hide");
+                $(this.lastChild).toggleClass("hide");
             })
             .appendTo(listOfTrains);
 
-        printTableRow(idouter, train, i);
+        printTableRow(idouter, train, i, indexOfDeparture);
 
     }
 }
 
-function printTableRow(idouter, train, i) {
+/** Print timetable of a train to the HTML-page */
+
+function printTableRow(idouter, train, i, startingIndex) {
     var trainId = train.trainNumber + train.trainType + i;
     $("<ul></ul>", {id: trainId}).addClass("hide").appendTo(document.getElementById(idouter));
 
-        for (var j = 1; j < train.timeTableRows.length; j = j + 2) {
 
-            if (stationShortCodes.indexOf(train.timeTableRows[j].stationShortCode) < 0) {
-                continue;
-            }
-            if (train.timeTableRows[j].trainStopping === false) {
-                continue;
-            }
-            var stationCode = train.timeTableRows[j].stationShortCode;
-            var index = stationShortCodes.indexOf(stationCode);
-            var departureTime = new Date(train.timeTableRows[j].scheduledTime);
+    for (var j = startingIndex+1; j < train.timeTableRows.length; j = j + 2) {
 
+        if (stationShortCodes.indexOf(train.timeTableRows[j].stationShortCode) < 0) {
+            continue;
+        }
+        if (train.timeTableRows[j].trainStopping === false) {
+            continue;
+        }
+
+        var stationCode = train.timeTableRows[j].stationShortCode;
+        var index = stationShortCodes.indexOf(stationCode);
+        var departureTime = new Date(train.timeTableRows[j].scheduledTime);
+
+
+        if (train.timeTableRows[j].stationShortCode === stationInfo[toSt.value].shortCode) {
             $("<li></li>").append(stationNames[index]
                 + ": "
                 + departureTime.toLocaleTimeString('fi', timeSettings))
                 .appendTo(document.getElementById(trainId));
-            if (train.timeTableRows[j].stationShortCode === stationInfo[toSt.value].shortCode) {
-                break;
-            }
+            break;
         }
-}
 
+        var arrivalTime = new Date(train.timeTableRows[j+1].scheduledTime);
+        var stopLength = parseInt((arrivalTime-departureTime)/(1000*60));
+        var stopLengthWord;
+        if (stopLength === 1){
+            stopLengthWord = " minuutti";
+        } else {
+            stopLengthWord = " minuuttia";
+        }
+        $("<li></li>").append(stationNames[index]
+            + ": "
+            + departureTime.toLocaleTimeString('fi', timeSettings)
+            + ", pysähdys " + stopLength + stopLengthWord)
+            .appendTo(document.getElementById(trainId));
+    }
+}

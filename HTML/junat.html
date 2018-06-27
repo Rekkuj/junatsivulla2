@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <style>
-        .hide{
-            display: none;
-        }
-    </style>
     <meta charset="UTF-8">
     <title>Juna-aikataulu</title>
     <link rel="stylesheet" href="../CSS/junat.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
+
 </head>
+<<<<<<< HEAD
 <body onload="loadCookies()">
+=======
+<!--<body onload=resetStations()>-->
+<body onload=loadCookies()>
+>>>>>>> 8b608eea04cded277b82010507e8c5046992cdab
 <script src="../JS/cookies.js"></script>
 <img src="../mer_300.png">
 
-<h1>Junahaku</h1>
+<h1>Juna-aikataulu</h1>
 <fieldset>
 <div>
 <h4>Lähtöasema</h4>
@@ -28,21 +29,25 @@
 </div>
 <div>
     <p>
+<<<<<<< HEAD
 
     <button type=button id="search" onclick="getTrains(), saveCookies()" value="getTrains">Hae junat</button>
     <button type=button id="clearInputBoxes" onclick="document.getElementById('fromSt').value = '', document.getElementById('toSt').value = ''">Tyhjennä haku</button>
 
+=======
+    <button type=button id="search" onclick="getTrains(), saveCookies()" value="getTrains">Hae junat</button>
+    <button type=button id="clearInputBoxes" onclick=resetStations()>Tyhjennä haku</button>
+>>>>>>> 8b608eea04cded277b82010507e8c5046992cdab
     </p>
 </div>
+
 </fieldset>
-</p>
+<br>
 <fieldset>
-<ol id=trainlist></ol>
-
-
+<div id="trainlist" class="trainlist"></div>
 </fieldset>
 
-
+<script src="../JS/distance.js"></script>
 <script src="../JS/junat.js"></script>
 
 <footer>© MER 2018</footer>
