@@ -49,6 +49,14 @@ function loadPage(){
     loadCookies();
 }
 
+function getFromStCookie() {
+    return fromSt.value;
+}
+
+function getToStCookie() {
+    return toSt.value;
+}
+
 // function deleteCookies() {
 //     console.log("Cookies will be removed")
 
