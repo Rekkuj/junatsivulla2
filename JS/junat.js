@@ -175,4 +175,3 @@ function printTableRow(idouter, train, i, startingIndex) {
             .appendTo(document.getElementById(trainId));
     }
 }
-
