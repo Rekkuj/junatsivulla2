@@ -135,7 +135,8 @@ function addToList(table) {
 
         var idouter = "train" + i;
 
-        $("<li></li>", {id: idouter})
+
+        $("<p></p>", {id: idouter})
             .append("<span>" + fromSt.value + " - " + toSt.value + ": " + train.trainType + train.trainNumber + "</span>"
                 + "<br>Lähtö: " + departureDate.toLocaleDateString('fi',dateSettings)
                 + " klo " + departureTime.toLocaleTimeString('fi',timeSettings)

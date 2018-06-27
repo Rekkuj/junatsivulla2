@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-
-    <style>
-
-        ul li p{
-            margin-bottom: 0;
-        }
-
-    </style>
-
     <meta charset="UTF-8">
     <title>Juna-aikataulu</title>
     <link rel="stylesheet" href="../CSS/junat.css">
@@ -17,10 +8,12 @@
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
 
 </head>
-<body>
+<!--<body onload=resetStations()>-->
+<body onload=loadCookies()>
+<script src="../JS/cookies.js"></script>
 <img src="../mer_300.png">
 
-<h1>Junahaku</h1>
+<h1>Juna-aikataulu</h1>
 <fieldset>
 <div>
 <h4>Lähtöasema</h4>
@@ -32,16 +25,16 @@
 </div>
 <div>
     <p>
-    <button type=button id="search" onclick="getTrains()" value="getTrains">Hae junat</button>
-    <button type=button id="delcookies" onclick="deleteCookies()" value="delCookies">Tyhjennä haku</button>
+    <button type=button id="search" onclick="getTrains(), saveCookies()" value="getTrains">Hae junat</button>
+    <button type=button id="clearInputBoxes" onclick=resetStations()>Tyhjennä haku</button>
     </p>
 </div>
 
 
 </fieldset>
-</p>
+<br>
 <fieldset>
-<ul id="trainlist"></ul>
+<div id="trainlist" class="trainlist"></div>
 </fieldset>
 
 
