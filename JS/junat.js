@@ -72,6 +72,7 @@ req2.onreadystatechange = function () {
             var trainTable = JSON.parse(req2.responseText);
             console.log(trainTable);
             addToList(trainTable);
+            console.log(distance(stationInfo[fromSt.value],stationInfo[toSt.value]));
         } else {
             alert("Lataaminen epäonnistui.");
         }
@@ -94,9 +95,17 @@ function addToList(table) {
     for (var i = 0; i < lengthOrMax; i++) {
         var train = table[i];
 
+        var indexOfDeparture;
         var indexOfArriving;
 
         for (var j = 0; j < train.timeTableRows.length; j++) {
+            if (train.timeTableRows[j].stationShortCode === stationInfo[fromSt.value].shortCode){
+                if (j===0) {
+                    indexOfDeparture = j;
+                } else{
+                    indexOfDeparture = j+1;
+                }
+            }
             if (train.timeTableRows[j].stationShortCode === stationInfo[toSt.value].shortCode) {
                 indexOfArriving = j;
                 break;
@@ -105,7 +114,7 @@ function addToList(table) {
 
 
         var departureDate = new Date(train.departureDate);
-        var departureTime = new Date(train.timeTableRows[0].scheduledTime);
+        var departureTime = new Date(train.timeTableRows[indexOfDeparture].scheduledTime);
         var arrivalTime = new Date(train.timeTableRows[indexOfArriving].scheduledTime);
 
         var idouter = "train" + i;
@@ -116,32 +125,21 @@ function addToList(table) {
                 + " klo. " + departureTime.toLocaleTimeString('fi', timeSettings)
                 + "<br>Perillä: " + arrivalTime.toLocaleTimeString('fi', timeSettings))
             .click(function () {
-                $(this.childNodes).toggleClass("hide");
+                $(this.lastChild).toggleClass("hide");
             })
             .appendTo(listOfTrains);
 
-
-        // $("<li></li>", {id: idouter})
-        //     .append(fromSt.value + " - " + toSt.value + ": ")
-        //     .append(train.trainType + train.trainNumber
-        //         + "<br>Lähtö: " + departureDate.toLocaleDateString('fi',dateSettings)
-        //         + " klo. " + departureTime.toLocaleTimeString('fi', timeSettings)
-        //         + "<br>Saapumisaika: " + arrivalTime.toLocaleTimeString('fi', timeSettings))
-        //     .click(function () {
-        //         $(this.childNodes).toggleClass("hide");
-        //     })
-        //     .appendTo(listOfTrains);
-
-        printTableRow(idouter, train, i);
+        printTableRow(idouter, train, i, indexOfDeparture);
 
     }
 }
 
-function printTableRow(idouter, train, i) {
+function printTableRow(idouter, train, i, startingIndex) {
     var trainId = train.trainNumber + train.trainType + i;
     $("<ul></ul>", {id: trainId}).addClass("hide").appendTo(document.getElementById(idouter));
 
-    for (var j = 1; j < train.timeTableRows.length; j = j + 2) {
+
+    for (var j = startingIndex; j < train.timeTableRows.length; j = j + 2) {
 
         if (stationShortCodes.indexOf(train.timeTableRows[j].stationShortCode) < 0) {
             continue;
