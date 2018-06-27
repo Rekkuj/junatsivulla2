@@ -1,5 +1,6 @@
 body {
     width: 800px;
+    margin: auto;
 }
 
 h1 {
@@ -32,8 +33,26 @@ fieldset {
     font-family: Arial;
 }
 
-ul {
+.hide {
+    display: none;
+}
+
+.trainlist {
     color: black;
+}
+
+div p span {
+    font-weight: bold;
+    font-size: medium;
+}
+
+div p span:hover {
+    font-weight: bold;
+    font-style: italic;
+}
+
+p {
+    font-size: smaller;
 }
 
 button {
@@ -58,3 +77,4 @@ footer {
     text-align: justify;
     font-family: Arial;
 }
+

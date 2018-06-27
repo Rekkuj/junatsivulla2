@@ -119,8 +119,8 @@ function addToList(table) {
 
         var idouter = "train" + i;
 
-        $("<li></li>", {id: idouter})
-            .append("<strong>" + fromSt.value + " - " + toSt.value + ": " + train.trainType + train.trainNumber + "</strong>"
+        $("<p></p>", {id: idouter})
+            .append("<span>" + fromSt.value + " - " + toSt.value + ": " + train.trainType + train.trainNumber + "</span>"
                 + "<br>Lähtö: " + departureDate.toLocaleDateString('fi', dateSettings)
                 + " klo. " + departureTime.toLocaleTimeString('fi', timeSettings)
                 + "<br>Perillä: " + arrivalTime.toLocaleTimeString('fi', timeSettings))
@@ -164,14 +164,14 @@ function printTableRow(idouter, train, i, startingIndex) {
         var stopLength = parseInt((arrivalTime-departureTime)/(1000*60));
         var stopLengthWord;
         if (stopLength == 1){
-            stopLengthWord = "minuutti.";
+            stopLengthWord = " minuutti";
         } else {
-            stopLengthWord = "minuuttia.";
+            stopLengthWord = " minuuttia";
         }
         $("<li></li>").append(stationNames[index]
             + ": "
             + departureTime.toLocaleTimeString('fi', timeSettings)
-            + " , pysähdys " + stopLength + stopLengthWord)
+            + ", pysähdys " + stopLength + stopLengthWord)
             .appendTo(document.getElementById(trainId));
     }
 }
