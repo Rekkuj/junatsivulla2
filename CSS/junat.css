@@ -1,34 +1,60 @@
-
+body {
+    width: 800px;
+}
 
 h1 {
-    background-color: fuchsia;
+    background-color: #AC1556;
     color: white;
-    width: 40%;
     margin-left: 2px;
+    border-color: white;
+    border-style: solid;
     border-radius: 12px;
     padding: 20px;
     font-family: Arial;
 }
 
-h2 {
-    background-color: white;
+h4 {
     color: black;
-    width: 90%;
     margin-left: 2px;
     border-radius: 12px;
-    padding: 20px;
     font-family: Arial;
 }
 
 fieldset {
+    border-color: #AC1556;
+    border-width:7px;
+    border-style: double;
+    vertical-align: middle;
     margin-left: 2px;
     border-radius: 12px;
-    width: 40%;
+    padding: 20px;
     text-align: justify;
     font-family: Arial;
 }
 
 ul {
-    color: fuchsia;
+    color: black;
 }
 
+button {
+    background-color: #AC1556;
+    width: 140px;
+    height: 40px;
+    color: white;
+    font-size: medium;
+    font-weight: bolder;
+    align-content: center;
+}
+
+.input {
+    border-color: #AC1556;
+    width: 280px;
+    height: 30px;
+    font-family: Arial;
+}
+
+footer {
+    font-size: small;
+    text-align: justify;
+    font-family: Arial;
+}
