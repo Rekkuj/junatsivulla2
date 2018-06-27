@@ -1,10 +1,9 @@
 var listOfTrains = document.getElementById("trainlist");
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
-var fin = 'fi';
 var timeSettings = {hour: "2-digit", minute: '2-digit', hour12: false};
 var dateSettings = {weekday: 'short', day: 'numeric', month: 'numeric'};
-
+var closestStation;
 
 var req = new XMLHttpRequest();
 var req2 = new XMLHttpRequest();
@@ -31,7 +30,7 @@ req.onreadystatechange = function () {
     if (req.readyState === 4) {
         if (req.status === 200) {
             var stations = JSON.parse(req.responseText);
-            console.log(stations);
+            // console.log(stations);
             for (var i = 0; i < stations.length; i++) {
                 var station = stations[i].stationName;
                 var shortCode = stations[i].stationShortCode;
@@ -47,23 +46,31 @@ req.onreadystatechange = function () {
                     };
                     stationNames.push(station);
                     stationShortCodes.push(shortCode);
+                    $("<option></option>")
+                        .text(station)
+                        .appendTo(fromSt);
+                    $("<option></option>")
+                        .text(station)
+                        .appendTo(toSt);
                 }
+
             }
+
             console.log(stationNames);
             console.log(stationInfo);
-
-            var options = {
-                data: stationNames,
-                list: {
-                    maxNumberOfElements: 10,
-                    match:
-                        {
-                            enabled: true
-                        }
-                }
-            };
-            $("#fromSt").easyAutocomplete(options);
-            $("#toSt").easyAutocomplete(options);
+            //
+            // var options = {
+            //     data: stationNames,
+            //     list: {
+            //         maxNumberOfElements: 10,
+            //         match:
+            //             {
+            //                 enabled: true
+            //             }
+            //     }
+            // };
+            // // $("#fromSt").easyAutocomplete(options);
+            // $("#toSt").easyAutocomplete(options);
 
         } else {
             alert("Lataaminen epäonnistui.");
@@ -129,7 +136,7 @@ function addToList(table) {
         }
 
 
-        var departureDate = new Date(train.departureDate);
+
         var departureTime = new Date(train.timeTableRows[indexOfDeparture].scheduledTime);
         var arrivalTime = new Date(train.timeTableRows[indexOfArriving].scheduledTime);
 
@@ -138,9 +145,10 @@ function addToList(table) {
 
         $("<p></p>", {id: idouter})
             .append("<span>" + fromSt.value + " - " + toSt.value + ": " + train.trainType + train.trainNumber + "</span>"
-                + "<br>Lähtö: " + departureDate.toLocaleDateString('fi',dateSettings)
+                + "<br>Lähtöaika: " + departureTime.toLocaleDateString('fi',dateSettings)
                 + " klo " + departureTime.toLocaleTimeString('fi',timeSettings)
-                + "<br>Perillä: " + arrivalTime.toLocaleTimeString('fi', timeSettings))
+                + "<br>Saapumisaika: " + arrivalTime.toLocaleDateString('fi',dateSettings)
+                + "klo " + arrivalTime.toLocaleTimeString('fi', timeSettings))
             .click(function () {
                 $(this.lastChild).toggleClass("hide");
             })
