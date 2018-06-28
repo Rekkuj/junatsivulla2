@@ -15,32 +15,38 @@
 <img src="../mer_300.png">
 
 <div class="login">
-<input type="text" id="user" placeholder="Käyttäjätunnus">
-<input type="password" id="pass" placeholder="Salasana">
-<input type="button" class="loginbutton" onclick="login()" value="Kirjaudu sisään">
-<input type="button" class="loginbutton" onclick="setNewUserToMap()" value="Rekisteröidy">
+    <input type="text" id="user" placeholder="Käyttäjätunnus">
+    <input type="password" id="pass" placeholder="Salasana">
+    <input type="button" class="loginbutton" onclick="login()" value="Kirjaudu sisään">
+    <input type="button" class="loginbutton" onclick="setNewUserToMap()" value="Rekisteröidy">
+</div>
+
+<div class="logout">
+    <input type="button" class="logoutbutton" onclick="setNewUserToMap()" value="Rekisteröidy">
 </div>
 
 <h1>Juna-aikataulu</h1>
 
 <fieldset>
-<div>
-<h4>Lähtöasema</h4>
-    <select id = "fromSt" class="input"></select>
+    <div>
+        <h4>Lähtöasema</h4>
+        <select id="fromSt" class="input"></select>
 
-<h4>Pääteasema</h4>
-    <select id = "toSt" class="input"></select>
-</div>
-<div>
-    <button type=button id="search" onclick="getTrains(), saveCookies()" onmouseover="scaleOn()" value="getTrains">Hae junat</button>
-    <button type=button id="clearInputBoxes" onclick=resetStations() onmouseover=scaleOn()>Tyhjennä haku</button>
-</div>
+        <h4>Pääteasema</h4>
+        <select id="toSt" class="input"></select>
+    </div>
+    <div>
+        <button type=button id="search" onclick="getTrains(), saveCookies()" onmouseover="scaleOn()" value="getTrains">
+            Hae junat
+        </button>
+        <button type=button id="clearInputBoxes" onclick=resetStations() onmouseover=scaleOn()>Tyhjennä haku</button>
+    </div>
 </fieldset>
 
 <br>
 
 <fieldset>
-<div id="trainlist" class="trainlist"></div>
+    <div id="trainlist" class="trainlist"></div>
 </fieldset>
 
 <script src="../JS/cookies.js"></script>
