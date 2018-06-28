@@ -1,3 +1,8 @@
+/*
+ * Trains
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
+ */
+
 var listOfTrains = document.getElementById("trainlist");
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");

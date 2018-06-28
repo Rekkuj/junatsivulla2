@@ -1,3 +1,8 @@
+/*
+ * Login
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
+ */
+
 var loginMap = new Map();
 var user;
 var pass;

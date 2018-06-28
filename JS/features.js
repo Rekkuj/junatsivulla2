@@ -1,6 +1,6 @@
 /*
  * Features
- * @author Reija Jokinen (http://github.com/Rekkuj)
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
  */
 
 function showTrainlist() {

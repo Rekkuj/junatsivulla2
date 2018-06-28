@@ -1,3 +1,8 @@
+/*
+ * Distance
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
+ */
+
 function distance(point1, point2) {
     var earthR = 6371e3;
     var lati1 = deg2Rad(point1.latitude);
