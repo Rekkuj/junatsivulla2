@@ -14,7 +14,6 @@ function setNewUserToMap() {
     }
 
 
-
     loginMap.set(user.value, pass.value);
     console.log("User and pass saved")
     console.log(loginMap);
@@ -43,19 +42,6 @@ function login() {
         console.log("Something went wrooong");
         alert("Tarkista nimi ja salasana");
     }
-
-    // for (var [key, value] of loginMap) {
-    //     if(key.contains(user)) {
-    //         console.log(user.getValue());
-    //         if(this.user(value).equals(pass,pass.value)) {
-    //             console.log("User and pass match");
-    //             welcome();
-    //         } else {
-    //             return "Tarkista nimi ja salasana";
-    //         }
-    //     return "Tarkista nimi ja salasana";
-    //     }
-    // }
 
 }
 
