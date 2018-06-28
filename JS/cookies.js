@@ -42,11 +42,20 @@ function loadCookies() {
 function resetStations() {
     fromSt.value = '';
     toSt.value = '';
-    while (listOfTrains.firstChild) {
-        listOfTrains.removeChild(listOfTrains.firstChild);
-    }
 }
 
+function loadPage(){
+    resetStations();
+    loadCookies();
+}
+
+function getFromStCookie() {
+    return fromSt.value;
+}
+
+function getToStCookie() {
+    return toSt.value;
+}
 
 // function deleteCookies() {
 //     console.log("Cookies will be removed")
@@ -63,3 +72,4 @@ function resetStations() {
 //     console.log("Cookies removed")
 //     console.log(myCookies)
 // }
+

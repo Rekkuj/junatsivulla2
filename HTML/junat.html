@@ -27,12 +27,15 @@
 
 <h4>Pääteasema</h4>
     <input id = "toSt" class="input" placeholder="Valitse pääteasema">
+
 </div>
 
 <div>
+
     <button type=button id="search" onclick="getTrains(), saveCookies()" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='button'" value="getTrains">Hae junat</button>
     <button type=button id="clearInputBoxes" onclick=resetStations() class="scales" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='scales'">Tyhjennä haku</button>
 </div>
+
 </fieldset>
 
 <br>
@@ -40,6 +43,7 @@
 <fieldset>
 <div id="trainlist" class="trainlist"></div>
 </fieldset>
+
 
 <script src="../JS/distance.js"></script>
 <script src="../JS/junat.js"></script>
