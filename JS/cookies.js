@@ -83,7 +83,7 @@ function saveLastUser() {
 
 // function deleteCookies() {
 //     console.log("Cookies will be removed")
-
+//
 // delete myCookies['_fromSt'];
 // delete myCookies ['_toSt'];
 // for (var i = 0; i < myCookies.length; i++) {
