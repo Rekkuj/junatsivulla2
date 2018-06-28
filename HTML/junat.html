@@ -12,19 +12,19 @@
 </head>
 
 <!--<body>-->
-<body onload=loadCookies()>
+<body onload=loadCookies(),getOldUsers(),checkLastUser()>
 
 <img src="../mer_300.png">
 
 <div id="login" class="login">
     <input type="text" id="user" placeholder="Käyttäjätunnus">
     <input type="password" id="pass" placeholder="Salasana">
-    <input type="button" class="loginbutton" onclick="login(), saveLastUser()" value="Kirjaudu sisään">
-    <input type="button" class="loginbutton" onclick="setNewUserToMap()" value="Rekisteröidy">
+    <input type="button" class="loginbutton" onclick="saveCookies(),login()" value="Kirjaudu sisään">
+    <input type="button" class="loginbutton" onclick="saveCookies(),setNewUserToMap()" value="Rekisteröidy">
 </div>
 
 <div id="logout" class="hide">
-    <input type="button" class="logoutbutton" value="Kirjaudu ulos">
+    <input type="button" class="logoutbutton" value="Kirjaudu ulos" onclick="logOut()">
 </div>
 
 <h1>Juna-aikataulu</h1>
