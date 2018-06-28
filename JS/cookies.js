@@ -1,4 +1,3 @@
-
 var myCookies = {};
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
@@ -25,11 +24,11 @@ function saveCookies() {
 function loadCookies() {
     console.log("loading cookies");
     console.log(myCookies)
-    // if (myCookies === "Valitse asema" || myCookies.length == null) {
-    //     console.log("TThheeeeeeeere is noooooooooo coookies")
-    //     // resetStations();
-    //     return false;
-    // }
+    if (myCookies === undefined || myCookies.length == null) {
+        console.log("TThheeeeeeeere is noooooooooo coookies")
+        // resetStations();
+        return false;
+    }
 
     myCookies = {};
     var kv = document.cookie.split(";");
@@ -42,17 +41,15 @@ function loadCookies() {
 }
 
 function resetStations() {
-    fromSt.value = '';
-    toSt.value = '';
-}
-
-function loadPage(){
-    resetStations();
-    loadCookies();
+    fromSt.value = 'Valitse asema';
+    toSt.value = 'Valitse asema';
+    while (listOfTrains.firstChild) {
+        listOfTrains.removeChild(listOfTrains.firstChild);
+    }
 }
 
 function getFromStCookie() {
-    return fromSt.value;
+    return document.cookie["_fromSt"];
 }
 
 function getToStCookie() {

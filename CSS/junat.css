@@ -12,10 +12,12 @@ img {
 .login {
     display: flex;
     justify-content: flex-end;
+    flex-flow: row wrap;
 }
 
 .login input{
     margin-left: 2px;
+    margin-bottom: 3px;
     border-color: #AC1556;
 }
 
@@ -31,10 +33,27 @@ img {
     align-content: center
 }
 
+.logout {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logoutbutton {
+    background-color: #AC1556;
+    margin-right: 2px;
+    border-radius: 8px;
+    width: 100px;
+    height: 22px;
+    color: white;
+    font-size: x-small;
+    font-weight: bolder;
+    align-content: center
+}
+
 h1 {
     background-color: #AC1556;
     color: white;
-    margin-top: 5px;
+    margin-top: 3px;
     border-color: white;
     border-style: solid;
     border-radius: 12px;
@@ -90,13 +109,12 @@ div p:hover {
 div p {
     font-size: smaller;
     margin: 5px;
-    padding: 12px;
+    padding: 8px;
 }
 
 button {
     background-color: #AC1556;
     border-radius: 12px;
-    width: 140px;
     height: 40px;
     color: white;
     font-size: medium;
@@ -106,7 +124,7 @@ button {
 
 .input {
     border-color: #AC1556;
-    width: 280px;
+    width: 250px;
     height: 30px;
     margin-top: 2px;
     margin-bottom: 2px;
@@ -131,6 +149,7 @@ button {
 
 footer {
     font-size: small;
+    font-weight: bolder;
     text-align: center;
     color: #AC1556;
     font-family: Arial;

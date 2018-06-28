@@ -19,6 +19,7 @@ var stationInfo = {};
  * Object: key - Station name, properties - shortCode, longitude, latitude, stationCode (numeric)
  * */
 
+
 function getAllStations() {
     req.open('GET', 'https://rata.digitraffic.fi/api/v1/metadata/stations', true);
     req.send(null);
@@ -29,6 +30,7 @@ getAllStations();
 req.onreadystatechange = function () {
     if (req.readyState === 4) {
         if (req.status === 200) {
+            loadCookies();
             var fromCookie = getFromStCookie();
             var toCookie = getToStCookie();
             var stations = JSON.parse(req.responseText);
