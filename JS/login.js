@@ -38,6 +38,7 @@ function login() {
     if (kw === pass.value) {
         console.log("Login ok");
         welcome();
+        showWelcome();
     } else {
         console.log("Something went wrooong");
         alert("Tarkista nimi ja salasana");

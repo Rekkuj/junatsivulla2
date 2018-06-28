@@ -3,7 +3,19 @@
  * @author Reija Jokinen (http://github.com/Rekkuj)
  */
 
-function scaleOn() {
-    var element = document.getElementsByTagName("scale")
-    element.classList.add("scale");
+function showTrainlist() {
+    $("#trlist").removeClass("hide");
+}
+
+function hideTrainlist() {
+    $("#trlist").addClass("hide");
+}
+
+function showWelcome() {
+    hideLogin();
+    $("#logout").removeClass("hide");
+}
+
+function hideLogin() {
+    $("#login").addClass("hide");
 }
