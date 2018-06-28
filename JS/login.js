@@ -13,13 +13,18 @@ function setNewUserToMap() {
     //     console.log(key + ' = ' + value);
     // }
 
-    for (var key of loginMap.keys()) {
-        console.log(key);
-        if(key.contains(user)) {
-            console.log("name is already used")
-            return alert("Username is alreade used"),clearNameAndPass();
-        }
+    // for (var key of loginMap.keys()) {
+    //     console.log(key);
+    //     if(key.contains(user)) {
+    //         console.log("name is already used")
+    //         return alert("Username is alreade used"),clearNameAndPass();
+    //     }
+    //
+    // }
 
+    if(loginMap.has(user)) {
+        console.log("User is already used");
+        return window.confirm("Käyttäjänimi on jo käytössä, ole hyvä ja vaihda nimi.")
     }
 
     loginMap.set(user.value, pass.value);
