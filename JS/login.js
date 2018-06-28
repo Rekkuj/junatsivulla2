@@ -49,3 +49,7 @@ function login() {
 function welcome() {
     return alert("Tervetuloa" + user);
 }
+
+function logOut() {
+    
+}
