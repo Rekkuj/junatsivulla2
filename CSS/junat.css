@@ -78,7 +78,8 @@ div p span {
 div p:hover {
     background-color: #AC1556;
     color: white;
-    margin: 5px;
+    margin: 15px;
+    padding: 12px;
     /*transform: scale(1.05, 1.05);*/
     /*-moz-transform: scale(1.05, 1.05);*/
     /*-ms-transform: scale(1.05, 1.05);*/
@@ -88,6 +89,8 @@ div p:hover {
 
 div p {
     font-size: smaller;
+    margin: 5px;
+    padding: 12px;
 }
 
 button {
