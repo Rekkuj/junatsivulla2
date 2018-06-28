@@ -36,9 +36,12 @@ img {
 .logout {
     display: flex;
     justify-content: flex-end;
+    vertical-align: middle;
 }
 
 .logoutbutton {
+    display: flex;
+    justify-content: flex-end;
     background-color: #AC1556;
     margin-right: 2px;
     border-radius: 8px;
@@ -118,7 +121,7 @@ button {
     align-content: center;
 }
 
-.active, button:hover, .loginbutton:hover, .logoutbutton:hover {
+button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutton:active, .logoutbutton:active {
     background-color: #E42376;
     color: black;
     transform: scale(1.05, 1.05);

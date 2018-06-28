@@ -17,6 +17,7 @@ function setNewUserToMap() {
     loginMap.set(user.value, pass.value);
     console.log("User and pass saved")
     console.log(loginMap);
+    login();
     clearNameAndPass();
     console.log("User and password fields")
 }
@@ -47,7 +48,8 @@ function login() {
 }
 
 function welcome() {
-    return alert("Tervetuloa" + user);
+    $("<h3></h3>").text("Tervetuloa " + user.value).prependTo("#logout");
+    // return "Tervetuloa " + user;
 }
 
 function logOut() {
