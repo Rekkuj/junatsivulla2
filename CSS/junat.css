@@ -40,8 +40,6 @@ img {
 }
 
 .logoutbutton {
-    display: flex;
-    justify-content: flex-end;
     background-color: #AC1556;
     margin-right: 2px;
     border-radius: 8px;
@@ -62,6 +60,13 @@ h1 {
     border-style: solid;
     border-radius: 12px;
     padding: 20px;
+    font-family: Arial;
+}
+
+h3 {
+    color: #AC1556;
+    text-align: left;
+    border-radius: 12px;
     font-family: Arial;
 }
 
@@ -136,13 +141,19 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
     border-radius: 12px;
     height: 45px;
     align-content: center;
+    vertical-align: center;
 }
 
 .switch:hover {
     background-color: lightgrey;
     border-radius: 12px;
-    height: 40px;
+    height: 45px;
     align-content: center;
+    transform: scale(1.05, 1.05);
+    -moz-transform: scale(1.05, 1.05);
+    -ms-transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    -o-transform: scale(1.05, 1.05);
 }
 
 .input {
@@ -155,7 +166,7 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 
 .inputdate {
     border-color: #AC1556;
-    width: 120px;
+    width: 125px;
     height: 23px;
     margin-top: 2px;
     margin-bottom: 5px;
@@ -164,7 +175,7 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 
 .inputtime {
     border-color: #AC1556;
-    width: 120px;
+    width: 110px;
     height: 23px;
     margin-top: 2px;
     margin-bottom: 5px;
