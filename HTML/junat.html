@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,48 +8,51 @@
     <link rel="stylesheet" href="../CSS/junat.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../Autocomplete/jquery.easy-autocomplete.min.js"></script>
-
+    <script src="../JS/cookies.js"></script>
 </head>
+
+<!--<body>-->
 <body onload=loadCookies()>
-<script src="../JS/cookies.js"></script>
+
 <img src="../mer_300.png">
+
 <div class="login">
-<input type="text" id="user" placeholder="Käyttäjätunnus">
-<input type="password" id="pass" placeholder="Salasana">
-<input type="button" class="loginbutton" value="Kirjaudu sisään" onclick="login()">
-<input type="button" onclick="setNewUserToMap()" class="loginbutton" value="Rekisteröidy">
+    <input type="text" id="user" placeholder="Käyttäjätunnus">
+    <input type="password" id="pass" placeholder="Salasana">
+    <input type="button" class="loginbutton" onclick="login()" value="Kirjaudu sisään">
+    <input type="button" class="loginbutton" onclick="setNewUserToMap()" value="Rekisteröidy">
 </div>
+
+<div class="logout">
+    <input type="button" class="hide" onclick="" value="Kirjaudu ulos">
+</div>
+
 <h1>Juna-aikataulu</h1>
 
 <fieldset>
-<div>
-<h4>Lähtöasema</h4>
+    <div>
+        <h4>Lähtöasema</h4>
+        <select id="fromSt" class="input"></select>
 
-    <select id = "fromSt" class="input" ></select>
-
-<h4>Pääteasema</h4>
-
-    <select id = "toSt" class="input" ></select>
-
-</div>
-
-<div>
-
-    <button type=button id="search" onclick="getTrains(), saveCookies()" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='button'" value="getTrains">Hae junat</button>
-    <button type=button id="clearInputBoxes" onclick=resetStations() class="scales" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='scales'">Tyhjennä haku</button>
-
-</div>
+        <h4>Pääteasema</h4>
+        <select id="toSt" class="input"></select>
+    </div>
+    <div>
+        <button type=button onclick="getTrains(), saveCookies()" onmouseover=scaleOn() value="getTrains">Hae junat</button>
+        <button type=button onclick=resetStations() onmouseover=scaleOn()>Tyhjennä haku</button>
+    </div>
 
 </fieldset>
 
 <br>
 
 <fieldset>
-<div id="trainlist" class="trainlist"></div>
+    <div id="trainlist" class="trainlist"></div>
 </fieldset>
 
 
 <script src="../JS/distance.js"></script>
+<script src="../JS/features.js"></script>
 <script src="../JS/junat.js"></script>
 <script src="../JS/login.js"></script>
 
