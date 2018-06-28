@@ -34,7 +34,7 @@ req.onreadystatechange = function () {
             var stations = JSON.parse(req.responseText);
 
 
-            if (fromCookie.length===0) {
+            if (fromCookie ===undefined) {
                 $("<option></option>")
                     .text("Valitse asema")
                     .attr('selected', true)
@@ -42,7 +42,7 @@ req.onreadystatechange = function () {
                     .prop('disabled', true)
                     .appendTo(fromSt);
             }
-            if (toCookie.length===0) {
+            if (toCookie === undefined) {
                 $("<option></option>")
                     .text("Valitse asema")
                     .attr('selected', true)
