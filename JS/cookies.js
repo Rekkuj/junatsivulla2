@@ -3,6 +3,8 @@ myCookies = document.cookie;
 console.log(myCookies);
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
+var lastUser;
+var lastPass;
 
 function saveCookies() {
     // resetStations();
@@ -32,11 +34,11 @@ function loadCookies() {
     console.log(document.cookie);
 
     console.log(myCookies)
-    if (myCookies === undefined || myCookies.length == null) {
-        console.log("TThheeeeeeeere is noooooooooo coookies")
-        // resetStations();
-        return false;
-    }
+    // if (myCookies === undefined || myCookies.length == null) {
+    //     console.log("TThheeeeeeeere is noooooooooo coookies")
+    //     // resetStations();
+    //     return false;
+    // }
 
     myCookies = {};
     var kv = document.cookie.split(";");
@@ -69,6 +71,15 @@ function getToStCookie() {
     var toSt = myCookies ["_toSt"];
     return toSt;
 }
+
+function saveLastUser() {
+
+    lastUser = document.getElementById("user").value;
+    lastPass = document.getElementById("pass").value;
+    console.log(lastUser + lastPass);
+
+}
+
 
 // function deleteCookies() {
 //     console.log("Cookies will be removed")

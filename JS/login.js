@@ -53,5 +53,5 @@ function welcome() {
 }
 
 function logOut() {
-    
+    clearNameAndPass();
 }
