@@ -29,14 +29,38 @@ getAllStations();
 req.onreadystatechange = function () {
     if (req.readyState === 4) {
         if (req.status === 200) {
+            var fromCookie = getFromStCookie();
+            var toCookie = getToStCookie();
             var stations = JSON.parse(req.responseText);
-            // console.log(stations);
+
+
+            if (fromCookie.length===0) {
+                $("<option></option>")
+                    .text("Valitse asema")
+                    .attr('selected', true)
+                    .attr('hidden', 'hidden')
+                    .prop('disabled', true)
+                    .appendTo(fromSt);
+            }
+            if (toCookie.length===0) {
+                $("<option></option>")
+                    .text("Valitse asema")
+                    .attr('selected', true)
+                    .attr('hidden', 'hidden')
+                    .prop('disabled', true)
+                    .appendTo(toSt);
+            }
+
             for (var i = 0; i < stations.length; i++) {
                 var station = stations[i].stationName;
+                // console.log(station)
                 var shortCode = stations[i].stationShortCode;
                 var latitude = stations[i].latitude;
                 var longitude = stations[i].longitude;
                 var stationCode = stations[i].stationUICCode;
+                var sameAsFrom = fromCookie===station;
+                var sameAsTo = toCookie===station;
+
                 if (stations[i].passengerTraffic === true) {
                     stationInfo[station] = {
                         shortCode: shortCode,
@@ -48,12 +72,13 @@ req.onreadystatechange = function () {
                     stationShortCodes.push(shortCode);
                     $("<option></option>")
                         .text(station)
+                        .attr('selected',sameAsFrom)
                         .appendTo(fromSt);
                     $("<option></option>")
                         .text(station)
+                        .attr('selected',sameAsTo)
                         .appendTo(toSt);
                 }
-
             }
 
             console.log(stationNames);

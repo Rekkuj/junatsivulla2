@@ -5,6 +5,7 @@ var toSt = document.getElementById("toSt");
 function saveCookies() {
     myCookies["_fromSt"] = document.getElementById("fromSt").value;
     myCookies["_toSt"] = document.getElementById("toSt").value;
+    console.log(myCookies);
     console.log("getElementById")
 
     document.cookie = "";
@@ -23,11 +24,11 @@ function saveCookies() {
 function loadCookies() {
     console.log("loading cookies");
     console.log(myCookies)
-    if (myCookies === undefined || myCookies.length == null) {
-        console.log("TThheeeeeeeere is noooooooooo coookies")
-        // resetStations();
-        return false;
-    }
+    // if (myCookies === "Valitse asema" || myCookies.length == null) {
+    //     console.log("TThheeeeeeeere is noooooooooo coookies")
+    //     // resetStations();
+    //     return false;
+    // }
 
     myCookies = {};
     var kv = document.cookie.split(";");
@@ -72,3 +73,4 @@ function getToStCookie() {
 //     console.log("Cookies removed")
 //     console.log(myCookies)
 // }
+
