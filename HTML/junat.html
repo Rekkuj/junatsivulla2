@@ -14,7 +14,7 @@
 <!--<body>-->
 <body onload=loadCookies()>
 
-<img src="../mer_300.png">
+<img src="../IMAGES/mer_300.png">
 
 <div id="login" class="login">
     <input type="text" id="user" placeholder="Käyttäjätunnus">
@@ -34,18 +34,24 @@
         <h4>Lähtöasema</h4>
         <select id="fromSt" class="input"></select>
         <input id ="date" type = date class="inputdate">
-        <input id ="time" type = time class="inputdate">
-
+        <input id ="time" type = time class="inputtime">
+        <br>
+        <button class = "switch" onclick="switshFromTo()" onmouseover="switchImg()" onmouseout="switchImgBack()">
+            <img id = "arrows" src="../IMAGES/arrows.png" height=35px>
+        </button>
         <h4>Pääteasema</h4>
         <select id="toSt" class="input"></select>
     </div>
+
     <div>
         <button type=button onclick="getTrains(), saveCookies(), showTrainlist()" value="getTrains">Hae junat</button>
         <button type=button onclick="resetStations(), hideTrainlist()">Tyhjennä</button>
+
     </div>
 </fieldset>
 
 <br>
+
 
 <fieldset id="trlist" class="hide">
     <div id="trainlist" class="trainlist"></div>
