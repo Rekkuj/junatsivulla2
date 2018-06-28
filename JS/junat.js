@@ -20,6 +20,7 @@ var stationInfo = {};
  * Object: key - Station name, properties - shortCode, longitude, latitude, stationCode (numeric)
  * */
 
+
 function getAllStations() {
     req.open('GET', 'https://rata.digitraffic.fi/api/v1/metadata/stations', true);
     req.send(null);
@@ -42,6 +43,7 @@ setDateAndTime();
 req.onreadystatechange = function () {
     if (req.readyState === 4) {
         if (req.status === 200) {
+            loadCookies();
             var fromCookie = getFromStCookie();
             var toCookie = getToStCookie();
             console.log("LähtöCoocie = " + fromCookie);
@@ -56,7 +58,9 @@ req.onreadystatechange = function () {
                     .prop('disabled', true)
                     .appendTo(fromSt);
             }
-            if (toCookie.length === 0) {
+
+            if (toCookie === undefined) {
+
                 $("<option></option>")
                     .text("Valitse asema")
                     .attr('selected', true)
@@ -245,7 +249,7 @@ function printTableRow(idouter, train, i, startingIndex) {
     $("<ul></ul>", {id: trainId}).addClass("hide").appendTo(document.getElementById(idouter));
 
 
-    for (var j = startingIndex + 1; j < train.timeTableRows.length; j = j + 2) {
+    for (var j = startingIndex; j < train.timeTableRows.length; j = j + 2) {
 
         if (stationShortCodes.indexOf(train.timeTableRows[j].stationShortCode) < 0) {
             continue;
@@ -258,6 +262,14 @@ function printTableRow(idouter, train, i, startingIndex) {
         var index = stationShortCodes.indexOf(stationCode);
         var departureTime = new Date(train.timeTableRows[j].scheduledTime);
 
+        if (train.timeTableRows[j].stationShortCode === stationInfo[fromSt.value].shortCode) {
+            $("<li></li>").append(stationNames[index]
+                + ": "
+                + departureTime.toLocaleTimeString('fi', timeSettings))
+                .appendTo(document.getElementById(trainId));
+            j--;
+            continue;
+        }
 
         if (train.timeTableRows[j].stationShortCode === stationInfo[toSt.value].shortCode) {
             $("<li></li>").append(stationNames[index]

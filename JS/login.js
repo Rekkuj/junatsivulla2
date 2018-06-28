@@ -1,49 +1,57 @@
+var loginMap = new Map();
+var user;
+var pass;
+
+function setNewUserToMap() {
+    user = document.getElementById("user");
+    pass = document.getElementById("pass");
+
+    console.log(user + pass);
+
+    if(loginMap.has(user.value)) {
+        console.log("User is already used");
+        return window.confirm("Käyttäjänimi on jo käytössä, ole hyvä ja vaihda nimi.")
+    }
+
+
+    loginMap.set(user.value, pass.value);
+    console.log("User and pass saved")
+    console.log(loginMap);
+    login();
+    clearNameAndPass();
+    console.log("User and password fields")
+}
+
+function clearNameAndPass() {
+    user.value='';
+    pass.value='';
+}
+
 function login() {
+    var user = document.getElementById("user");
+    var pass = document.getElementById("pass");
+    var kw = loginMap.get(user.value);
+    console.log(kw);
+    console.log(pass.value);
 
-    var user = document.getElementById('user');
-    var pass = document.getElementById('pass');
+    // var kwc = kw.caesar();
 
-    var testuser = "testi";
-    var testpass = "testisalaus";
-    console.log("Data saved" + user.value + pass.value)
-
-
-    if (user.value == testuser) {
-
-        if (pass.value == testpass) {
-
-            window.alert("You are logged in as " + user.value);
-        } else {
-
-            window.alert("Go home, you're drunk!");
-        }
+    if (kw === pass.value) {
+        console.log("Login ok");
+        welcome();
+        showWelcome();
     } else {
-        window.alert("Go home, you're drunk!")
+        console.log("Something went wrooong");
+        alert("Tarkista nimi ja salasana");
     }
 
 }
 
-var users = {};
-// var un = document.getElementById("user");
-// var pw = document.getElementById("pass");
-
-function saveUser() {
-    users["_user"] = document.getElementById("user").value;
-    users["_pass"] = document.getElementById("pass").value;
-    console.log("getElementById")
-    console.log(users)
-
-    document.user = "";
-    var expires = new Date(Date.now()+24*60*60*1000).toString();
-    console.log("Expiring date")
-    var userString = "";
-    for (var key in users) {
-        userString = key + "=" +users[key]+";"+expires+";";
-        document.user = userString;
-    }
-    console.log(document.user);
-    console.log("User saved");
-    console.log(users)
+function welcome() {
+    $("<h3></h3>").text("Tervetuloa " + user.value).prependTo("#logout");
+    // return "Tervetuloa " + user;
 }
 
-
+function logOut() {
+    
+}

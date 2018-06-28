@@ -1,5 +1,6 @@
-
 var myCookies = {};
+myCookies = document.cookie;
+console.log(myCookies);
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
 
@@ -11,11 +12,13 @@ function saveCookies() {
     console.log("getElementById")
 
     document.cookie = "";
-    var expires = new Date(Date.now()+60*1000).toString();
+
+    var expires = new Date(Date.now()+60*60*1000).toString();
+
     console.log("Expiring date")
     var cookieString = "";
     for (var key in myCookies) {
-        cookieString = key + "=" +myCookies[key]+";"+expires+";";
+        cookieString = key + "=" + myCookies[key] + ";" + expires + ";";
         document.cookie = cookieString;
     }
     console.log("Dokumentin keksit: " + document.cookie);
@@ -25,12 +28,15 @@ function saveCookies() {
 
 function loadCookies() {
     console.log("loading cookies");
+
+    console.log(document.cookie);
+
     console.log(myCookies)
-    // if (myCookies === "Valitse asema" || myCookies.length == null) {
-    //     console.log("TThheeeeeeeere is noooooooooo coookies")
-    //     // resetStations();
-    //     return false;
-    // }
+    if (myCookies === undefined || myCookies.length == null) {
+        console.log("TThheeeeeeeere is noooooooooo coookies")
+        // resetStations();
+        return false;
+    }
 
     myCookies = {};
     var kv = document.cookie.split(";");
@@ -47,22 +53,21 @@ function loadCookies() {
 function resetStations() {
     fromSt.value = 'Valitse asema';
     toSt.value = 'Valitse asema';
-}
-
-function loadPage(){
-    resetStations();
-    loadCookies();
+    while (listOfTrains.firstChild) {
+        listOfTrains.removeChild(listOfTrains.firstChild);
+    }
 }
 
 function getFromStCookie() {
-    loadCookies();
-    // myCookies["_fromSt"] = "Helsinki asema";
-    return myCookies["_fromSt"];
-    // return fromSt.value;
+
+    var fromSt = myCookies["_fromSt"];
+    console.log(fromSt);
+    return fromSt;
 }
 
 function getToStCookie() {
-    return toSt.value;
+    var toSt = myCookies ["_toSt"];
+    return toSt;
 }
 
 // function deleteCookies() {

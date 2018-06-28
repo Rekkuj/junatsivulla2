@@ -1,7 +1,7 @@
 
 body {
     width: 90%;
-    max-width: 800px;
+    max-width: 600px;
     margin: auto;
 }
 
@@ -12,16 +12,18 @@ img {
 .login {
     display: flex;
     justify-content: flex-end;
+    flex-flow: row wrap;
 }
 
 .login input{
     margin-left: 2px;
+    margin-bottom: 3px;
     border-color: #AC1556;
 }
 
 .loginbutton {
     background-color: #AC1556;
-    margin-right: 5px;
+    margin-right: 2px;
     border-radius: 8px;
     width: 100px;
     height: 22px;
@@ -31,14 +33,31 @@ img {
     align-content: center
 }
 
-p {
-    alignment: right;
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    vertical-align: middle;
+}
+
+.logoutbutton {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #AC1556;
+    margin-right: 2px;
+    border-radius: 8px;
+    width: 100px;
+    height: 22px;
+    color: white;
+    font-size: x-small;
+    font-weight: bolder;
+    align-content: center
 }
 
 h1 {
     background-color: #AC1556;
     color: white;
-    margin-top: 5px;
+    margin-top: 3px;
+    margin-bottom: 7px;
     border-color: white;
     border-style: solid;
     border-radius: 12px;
@@ -61,7 +80,7 @@ fieldset {
     vertical-align: middle;
     margin-left: 2px;
     border-radius: 12px;
-    padding: 20px;
+    padding-left: 20px;
     text-align: justify;
     font-family: Arial;
 }
@@ -80,23 +99,21 @@ div p span {
 }
 
 div p:hover {
-    background-color:  #AC1556;
+    background-color: #AC1556;
     color: white;
-    transform: scale(1.05, 1.05);
-    -moz-transform: scale(1.05, 1.05);
-    -ms-transform: scale(1.05, 1.05);
-    -webkit-transform: scale(1.05, 1.05);
-    -o-transform: scale(1.05, 1.05);
+    margin: 15px;
+    padding: 12px;
 }
 
 div p {
     font-size: smaller;
+    margin: 5px;
+    padding: 8px;
 }
 
 button {
     background-color: #AC1556;
     border-radius: 12px;
-    width: 140px;
     height: 40px;
     color: white;
     font-size: medium;
@@ -104,12 +121,60 @@ button {
     align-content: center;
 }
 
+button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutton:active, .logoutbutton:active {
+    background-color: #E42376;
+    color: black;
+    transform: scale(1.05, 1.05);
+    -moz-transform: scale(1.05, 1.05);
+    -ms-transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    -o-transform: scale(1.05, 1.05);
+}
+
+.switch {
+    background-color: transparent;
+    border-radius: 12px;
+    height: 40px;
+    align-content: center;
+    conte: center;
+}
+
+.switch:hover {
+    background-color: #E42376;
+    border-radius: 12px;
+    height: 40px;
+    align-content: center;
+    transform: scale(1.05, 1.05);
+    -moz-transform: scale(1.05, 1.05);
+    -ms-transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    -o-transform: scale(1.05, 1.05);
+}
+
 .input {
     border-color: #AC1556;
-    width: 230px;
+    width: 200px;
     height: 30px;
     margin-top: 2px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
+}
+
+.inputdate {
+    border-color: #AC1556;
+    width: 125px;
+    height: 30px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-family: Arial;
+}
+
+.inputtime {
+    border-color: #AC1556;
+    width: 110px;
+    height: 30px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-family: Arial;
 }
 
 .input:focus {
@@ -131,6 +196,7 @@ button {
 
 footer {
     font-size: small;
+    font-weight: bolder;
     text-align: center;
     color: #AC1556;
     font-family: Arial;
