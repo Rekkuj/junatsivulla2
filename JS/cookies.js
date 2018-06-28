@@ -72,4 +72,3 @@ function getToStCookie() {
 //     console.log("Cookies removed")
 //     console.log(myCookies)
 // }
-

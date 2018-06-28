@@ -80,7 +80,8 @@ div p span {
 }
 
 div p:hover {
-    font-weight: bold;
+    background-color:  #AC1556;
+    color: white;
     transform: scale(1.05, 1.05);
     -moz-transform: scale(1.05, 1.05);
     -ms-transform: scale(1.05, 1.05);
