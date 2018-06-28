@@ -88,6 +88,7 @@ fieldset {
     border-width:7px;
     border-style: double;
     vertical-align: middle;
+    margin-top: 7px;
     margin-left: 2px;
     border-radius: 12px;
     padding-left: 20px;
@@ -163,6 +164,7 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 
 .input {
     border-color: #AC1556;
+    border-width:2px;
     width: 200px;
     height: 30px;
     margin-top: 2px;
@@ -180,7 +182,7 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 
 .inputtime {
     border-color: #AC1556;
-    width: 110px;
+    width: 90px;
     height: 26px;
     margin-top: 2px;
     margin-bottom: 5px;
