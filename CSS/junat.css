@@ -1,7 +1,7 @@
 
 body {
     width: 90%;
-    max-width: 600px;
+    max-width: 525px;
     margin: auto;
 }
 
@@ -131,6 +131,20 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
     -o-transform: scale(1.05, 1.05);
 }
 
+.switch {
+    background-color: #E42376;
+    border-radius: 12px;
+    height: 45px;
+    align-content: center;
+}
+
+.switch:hover {
+    background-color: lightgrey;
+    border-radius: 12px;
+    height: 40px;
+    align-content: center;
+}
+
 .input {
     border-color: #AC1556;
     width: 200px;
@@ -142,13 +156,39 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 .inputdate {
     border-color: #AC1556;
     width: 120px;
-    height: 30px;
+    height: 23px;
     margin-top: 2px;
     margin-bottom: 5px;
+    font-family: Arial;
 }
 
-.input:focus {
+.inputtime {
+    border-color: #AC1556;
+    width: 120px;
+    height: 23px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-family: Arial;
+}
 
+a:link {
+    color: #AC1556;
+    alignment: center;
+    font-size: large;
+    font-family: Arial;
+}
+
+.bye {
+    background-color: #AC1556;
+    color: white;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 7px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 12px;
+    padding: 20px;
+    font-family: Arial;
 }
 
 .scaleOn {
