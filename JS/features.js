@@ -4,5 +4,6 @@
  */
 
 function scaleOn() {
-    this.className="scaleOn";
+    var element = document.getElementsByTagName("scale")
+    element.classList.add("scale");
 }

@@ -38,9 +38,17 @@
         <select id="toSt" class="input"></select>
     </div>
     <div>
-        <button type=button onclick="getTrains(), saveCookies()" onmouseover=scaleOn() value="getTrains">Hae junat</button>
+        <button type=button tag="scale" onclick="getTrains(), saveCookies()" onmouseover=scaleOn() value="getTrains">Hae junat</button>
         <button type=button onclick=resetStations() onmouseover=scaleOn()>Tyhjennä haku</button>
     </div>
+
+<div>
+
+    <button type=button id="search" onclick="getTrains(), saveCookies()" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='button'" value="getTrains">Hae junat</button>
+    <button type=button id="clearInputBoxes" onclick=resetStations() class="scales" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='scales'">Tyhjennä haku</button>
+
+</div>
+
 </fieldset>
 
 <br>
