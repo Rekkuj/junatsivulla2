@@ -3,19 +3,21 @@ var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
 
 function saveCookies() {
+    // resetStations();
     myCookies["_fromSt"] = document.getElementById("fromSt").value;
     myCookies["_toSt"] = document.getElementById("toSt").value;
+    console.log(myCookies);
     console.log("getElementById")
 
     document.cookie = "";
-    var expires = new Date(Date.now()+60*1000).toString();
+    var expires = new Date(Date.now() + 60 * 1000).toString();
     console.log("Expiring date")
     var cookieString = "";
     for (var key in myCookies) {
-        cookieString = key + "=" +myCookies[key]+";"+expires+";";
+        cookieString = key + "=" + myCookies[key] + ";" + expires + ";";
         document.cookie = cookieString;
     }
-    console.log(document.cookie);
+    console.log("Dokumentin keksit: " + document.cookie);
     console.log("Cookies saved");
     console.log(myCookies)
 }
@@ -35,22 +37,25 @@ function loadCookies() {
         var cookie = kv[id].split("=");
         myCookies[cookie[0].trim()] = cookie[1];
     }
-    document.getElementById("fromSt").value = myCookies["_fromSt"];
-    document.getElementById("toSt").value = myCookies ["_toSt"];
+
+    console.log("Cookie sisältää: " + myCookies);
+    // document.getElementById("fromSt").value = myCookies["_fromSt"];
+    // document.getElementById("toSt").value = myCookies ["_toSt"];
 }
 
 function resetStations() {
-    fromSt.value = '';
-    toSt.value = '';
-}
-
-function loadPage(){
-    resetStations();
-    loadCookies();
+    fromSt.value = 'Valitse asema';
+    toSt.value = 'Valitse asema';
+    while (listOfTrains.firstChild) {
+        listOfTrains.removeChild(listOfTrains.firstChild);
+    }
 }
 
 function getFromStCookie() {
-    return fromSt.value;
+    loadCookies();
+    // myCookies["_fromSt"] = "Helsinki asema";
+    return myCookies["_fromSt"];
+    // return fromSt.value;
 }
 
 function getToStCookie() {

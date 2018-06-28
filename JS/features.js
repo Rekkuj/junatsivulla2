@@ -4,6 +4,5 @@
  */
 
 function scaleOn() {
-    this.className.toggle("scaleOn");
+    this.className="scaleOn";
 }
-
