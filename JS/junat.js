@@ -33,10 +33,11 @@ req.onreadystatechange = function () {
             loadCookies();
             var fromCookie = getFromStCookie();
             var toCookie = getToStCookie();
+            console.log("LähtöCoocie = " + fromCookie);
             var stations = JSON.parse(req.responseText);
 
 
-            if (fromCookie.length===0) {
+            if (fromCookie === undefined) {
                 $("<option></option>")
                     .text("Valitse asema")
                     .attr('selected', true)
@@ -44,7 +45,7 @@ req.onreadystatechange = function () {
                     .prop('disabled', true)
                     .appendTo(fromSt);
             }
-            if (toCookie.length===0) {
+            if (toCookie.length === 0) {
                 $("<option></option>")
                     .text("Valitse asema")
                     .attr('selected', true)
@@ -60,8 +61,8 @@ req.onreadystatechange = function () {
                 var latitude = stations[i].latitude;
                 var longitude = stations[i].longitude;
                 var stationCode = stations[i].stationUICCode;
-                var sameAsFrom = fromCookie===station;
-                var sameAsTo = toCookie===station;
+                var sameAsFrom = fromCookie === station;
+                var sameAsTo = toCookie === station;
 
                 if (stations[i].passengerTraffic === true) {
                     stationInfo[station] = {
@@ -74,11 +75,11 @@ req.onreadystatechange = function () {
                     stationShortCodes.push(shortCode);
                     $("<option></option>")
                         .text(station)
-                        .attr('selected',sameAsFrom)
+                        .attr('selected', sameAsFrom)
                         .appendTo(fromSt);
                     $("<option></option>")
                         .text(station)
-                        .attr('selected',sameAsTo)
+                        .attr('selected', sameAsTo)
                         .appendTo(toSt);
                 }
             }
@@ -114,7 +115,7 @@ req2.onreadystatechange = function () {
             var trainTable = JSON.parse(req2.responseText);
             console.log(trainTable);
             addToList(trainTable);
-            console.log(distance(stationInfo[fromSt.value],stationInfo[toSt.value]));
+            console.log(distance(stationInfo[fromSt.value], stationInfo[toSt.value]));
         } else {
             alert("Lataaminen epäonnistui.");
         }
@@ -147,11 +148,11 @@ function addToList(table) {
 
         for (var j = 0; j < train.timeTableRows.length; j++) {
             //fromSt
-            if (train.timeTableRows[j].stationShortCode === stationInfo[fromSt.value].shortCode){
-                if (j===0) {
+            if (train.timeTableRows[j].stationShortCode === stationInfo[fromSt.value].shortCode) {
+                if (j === 0) {
                     indexOfDeparture = j;
-                } else{
-                    indexOfDeparture = j+1;
+                } else {
+                    indexOfDeparture = j + 1;
                     j++; //Index of leaving the station
                 }
             }
@@ -163,23 +164,52 @@ function addToList(table) {
         }
 
 
-
         var departureTime = new Date(train.timeTableRows[indexOfDeparture].scheduledTime);
         var arrivalTime = new Date(train.timeTableRows[indexOfArriving].scheduledTime);
+        var durationInMins = parseInt((arrivalTime - departureTime) / (1000 * 60));
+        var durationHours = parseInt(durationInMins / 60);
+        var leftoverMins = durationInMins - durationHours * 60;
+
+        var durationString = "Matkan kesto: ";
+        if (durationHours !== 0) {
+            durationString += durationHours + " h ";
+        }
+        durationString += leftoverMins + " min";
 
         var idouter = "train" + i;
 
 
+        if (train.trainCategory === "Commuter") {
+            var trainType = "Lähijuna " + train.commuterLineID;
+        } else {
+            switch (train.trainType) {
+                case "S":
+                    var trainType = "Pendolino " + train.trainNumber;
+                    break;
+                case "IC":
+                    var trainType = "InterCity " + train.trainNumber;
+                    break;
+                case "AE":
+                    var trainType = "Allegro " + train.trainNumber;
+                    break;
+                default:
+                    var trainType = "Kaukojuna " + train.trainType + train.trainNumber;
+
+            }
+        }
+
         $("<p></p>", {id: idouter})
-            .append("<span>" + fromSt.value + " - " + toSt.value + ": " + train.trainType + train.trainNumber + "</span>"
-                + "<br>Lähtöaika: " + departureTime.toLocaleDateString('fi',dateSettings)
-                + " klo " + departureTime.toLocaleTimeString('fi',timeSettings)
-                + "<br>Saapumisaika: " + arrivalTime.toLocaleDateString('fi',dateSettings)
-                + "klo " + arrivalTime.toLocaleTimeString('fi', timeSettings))
+            .append("<span>" + trainType + "</span>"
+                + "<br>Lähtöaika: " + departureTime.toLocaleDateString('fi', dateSettings)
+                + " klo " + departureTime.toLocaleTimeString('fi', timeSettings)
+                + "<br>Saapumisaika: " + arrivalTime.toLocaleDateString('fi', dateSettings)
+                + "klo " + arrivalTime.toLocaleTimeString('fi', timeSettings)
+                + "<br>" + durationString)
             .click(function () {
                 $(this.lastChild).toggleClass("hide");
             })
             .appendTo(listOfTrains);
+
 
         printTableRow(idouter, train, i, indexOfDeparture);
 
@@ -193,7 +223,7 @@ function printTableRow(idouter, train, i, startingIndex) {
     $("<ul></ul>", {id: trainId}).addClass("hide").appendTo(document.getElementById(idouter));
 
 
-    for (var j = startingIndex+1; j < train.timeTableRows.length; j = j + 2) {
+    for (var j = startingIndex + 1; j < train.timeTableRows.length; j = j + 2) {
 
         if (stationShortCodes.indexOf(train.timeTableRows[j].stationShortCode) < 0) {
             continue;
@@ -215,10 +245,10 @@ function printTableRow(idouter, train, i, startingIndex) {
             break;
         }
 
-        var arrivalTime = new Date(train.timeTableRows[j+1].scheduledTime);
-        var stopLength = parseInt((arrivalTime-departureTime)/(1000*60));
+        var arrivalTime = new Date(train.timeTableRows[j + 1].scheduledTime);
+        var stopLength = parseInt((arrivalTime - departureTime) / (1000 * 60));
         var stopLengthWord;
-        if (stopLength === 1){
+        if (stopLength === 1) {
             stopLengthWord = " minuutti";
         } else {
             stopLengthWord = " minuuttia";
