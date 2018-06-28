@@ -4,6 +4,7 @@ var toSt = document.getElementById("toSt");
 var timeSettings = {hour: "2-digit", minute: '2-digit', hour12: false};
 var dateSettings = {weekday: 'short', day: 'numeric', month: 'numeric'};
 var closestStation;
+var now =  new Date();
 
 var req = new XMLHttpRequest();
 var req2 = new XMLHttpRequest();
@@ -27,6 +28,18 @@ function getAllStations() {
 
 getAllStations();
 
+function setDateAndTime(){
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = ("0" + now.getHours()).slice(-2);
+    var mins = ("0" + now.getMinutes()).slice(-2);
+    document.getElementById("date").valueAsDate = now;
+    document.getElementById("time").value = hour + ":" + mins;
+}
+
+setDateAndTime();
+
 req.onreadystatechange = function () {
     if (req.readyState === 4) {
         if (req.status === 200) {
@@ -45,7 +58,9 @@ req.onreadystatechange = function () {
                     .prop('disabled', true)
                     .appendTo(fromSt);
             }
-            if (toCookie.length === 0) {
+
+            if (toCookie === undefined) {
+
                 $("<option></option>")
                     .text("Valitse asema")
                     .attr('selected', true)
@@ -127,8 +142,19 @@ req2.onreadystatechange = function () {
  * */
 
 function getTrains() {
+    var from = stationInfo[fromSt.value].shortCode;
+    var to = stationInfo[toSt.value].shortCode;
+    var depDate = document.getElementById("date").value;
+    var depTime = document.getElementById("time").value;
+    var year = depDate.slice(0,4);
+    var month = depDate.slice(5,7);
+    var day = depDate.slice(8,10);
+    console.log(depTime);
+    var hour = ("0" + (depTime.slice(0,2)-3)).slice(-2);
+    var mins = depTime.slice(3,5);
     var url = 'https://rata.digitraffic.fi/api/v1/live-trains/station/'
-        + stationInfo[fromSt.value].shortCode + '/' + stationInfo[toSt.value].shortCode;
+        + from + '/' + to + "/?startDate=" + year + "-" + month + "-" + day
+    + "T" + hour + ":" + mins + ":00.000Z";
     req2.open('GET', url, true);
     req2.send(null);
 }

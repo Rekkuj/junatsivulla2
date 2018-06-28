@@ -1,7 +1,7 @@
 
 body {
     width: 90%;
-    max-width: 800px;
+    max-width: 600px;
     margin: auto;
 }
 
@@ -36,9 +36,12 @@ img {
 .logout {
     display: flex;
     justify-content: flex-end;
+    vertical-align: middle;
 }
 
 .logoutbutton {
+    display: flex;
+    justify-content: flex-end;
     background-color: #AC1556;
     margin-right: 2px;
     border-radius: 8px;
@@ -54,6 +57,7 @@ h1 {
     background-color: #AC1556;
     color: white;
     margin-top: 3px;
+    margin-bottom: 7px;
     border-color: white;
     border-style: solid;
     border-radius: 12px;
@@ -76,7 +80,7 @@ fieldset {
     vertical-align: middle;
     margin-left: 2px;
     border-radius: 12px;
-    padding: 20px;
+    padding-left: 20px;
     text-align: justify;
     font-family: Arial;
 }
@@ -99,11 +103,6 @@ div p:hover {
     color: white;
     margin: 15px;
     padding: 12px;
-    /*transform: scale(1.05, 1.05);*/
-    /*-moz-transform: scale(1.05, 1.05);*/
-    /*-ms-transform: scale(1.05, 1.05);*/
-    /*-webkit-transform: scale(1.05, 1.05);*/
-    /*-o-transform: scale(1.05, 1.05);*/
 }
 
 div p {
@@ -122,12 +121,30 @@ button {
     align-content: center;
 }
 
+button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutton:active, .logoutbutton:active {
+    background-color: #E42376;
+    color: black;
+    transform: scale(1.05, 1.05);
+    -moz-transform: scale(1.05, 1.05);
+    -ms-transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    -o-transform: scale(1.05, 1.05);
+}
+
 .input {
     border-color: #AC1556;
-    width: 250px;
+    width: 200px;
     height: 30px;
     margin-top: 2px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
+}
+
+.inputdate {
+    border-color: #AC1556;
+    width: 120px;
+    height: 30px;
+    margin-top: 2px;
+    margin-bottom: 5px;
 }
 
 .input:focus {

@@ -8,23 +8,16 @@ function setNewUserToMap() {
 
     console.log(user + pass);
 
-    //Caesar function??
-    // for (var [key, value] of loginMap) {
-    //     console.log(key + ' = ' + value);
-    // }
-
-    for (var key of loginMap.keys()) {
-        console.log(key);
-        if(key.contains(user)) {
-            console.log("name is already used")
-            return alert("Username is alreade used"),clearNameAndPass();
-        }
-
+    if(loginMap.has(user.value)) {
+        console.log("User is already used");
+        return window.confirm("Käyttäjänimi on jo käytössä, ole hyvä ja vaihda nimi.")
     }
+
 
     loginMap.set(user.value, pass.value);
     console.log("User and pass saved")
     console.log(loginMap);
+    login();
     clearNameAndPass();
     console.log("User and password fields")
 }
@@ -37,11 +30,28 @@ function clearNameAndPass() {
 function login() {
     var user = document.getElementById("user");
     var pass = document.getElementById("pass");
+    var kw = loginMap.get(user.value);
+    console.log(kw);
+    console.log(pass.value);
 
-    for (var [key, value] of loginMap) {
-        if(key.contains(user)) {
-            console.log(user.getName());
-        }
+    // var kwc = kw.caesar();
+
+    if (kw === pass.value) {
+        console.log("Login ok");
+        welcome();
+        showWelcome();
+    } else {
+        console.log("Something went wrooong");
+        alert("Tarkista nimi ja salasana");
     }
 
+}
+
+function welcome() {
+    $("<h3></h3>").text("Tervetuloa " + user.value).prependTo("#logout");
+    // return "Tervetuloa " + user;
+}
+
+function logOut() {
+    
 }

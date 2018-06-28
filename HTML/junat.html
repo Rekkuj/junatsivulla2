@@ -16,15 +16,15 @@
 
 <img src="../mer_300.png">
 
-<div class="login">
+<div id="login" class="login">
     <input type="text" id="user" placeholder="Käyttäjätunnus">
     <input type="password" id="pass" placeholder="Salasana">
     <input type="button" class="loginbutton" onclick="login()" value="Kirjaudu sisään">
     <input type="button" class="loginbutton" onclick="setNewUserToMap()" value="Rekisteröidy">
 </div>
 
-<div class="logout">
-    <input type="button" class="hide" onclick="" value="Kirjaudu ulos">
+<div id="logout" class="hide">
+    <input type="button" class="logoutbutton" value="Kirjaudu ulos">
 </div>
 
 <h1>Juna-aikataulu</h1>
@@ -33,19 +33,21 @@
     <div>
         <h4>Lähtöasema</h4>
         <select id="fromSt" class="input"></select>
+        <input id ="date" type = date class="inputdate">
+        <input id ="time" type = time class="inputdate">
 
         <h4>Pääteasema</h4>
         <select id="toSt" class="input"></select>
     </div>
     <div>
-        <button type=button onclick="getTrains(), saveCookies()" onmouseover=scaleOn() value="getTrains">Hae junat</button>
-        <button type=button onclick=resetStations() onmouseover=scaleOn()>Tyhjennä haku</button>
+        <button type=button onclick="getTrains(), saveCookies(), showTrainlist()" value="getTrains">Hae junat</button>
+        <button type=button onclick="resetStations(), hideTrainlist()">Tyhjennä</button>
     </div>
 </fieldset>
 
 <br>
 
-<fieldset>
+<fieldset id="trlist" class="hide">
     <div id="trainlist" class="trainlist"></div>
 </fieldset>
 
