@@ -48,7 +48,7 @@ function login() {
 }
 
 function welcome() {
-    $("<h3></h3>").text("Tervetuloa " + user.value).prependTo("#logout");
+    $("<h3></h3>").text("Tervetuloa " + user.value + "!").appendTo("#welcome");
     // return "Tervetuloa " + user;
 }
 
