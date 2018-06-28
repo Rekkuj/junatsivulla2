@@ -18,4 +18,25 @@ function deg2Rad(degrees) {
     return Math.PI / 180 * degrees;
 }
 
+$(function getLocation(){
+    navigator.geolocation.getCurrentPosition(
+        function (loc){
+            myLocation = {latitude: loc.coords.latitude,
+                longitude: loc.coords.longitude};
+            var tempClosest;
+            var minDist = 10e6;
+            for (var station in stationInfo) {
+                var dist = distance(stationInfo[station],myLocation);
+                if (dist<minDist){
+                    minDist = dist;
+                    tempClosest = station;
+                }
+            }
+            closestStation = tempClosest;
+        },
+        function(errorData){
+            console.log('Paikkatietojen haku ei onnistunut');
+        }
+    );
+});
 
