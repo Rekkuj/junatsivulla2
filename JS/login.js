@@ -52,10 +52,16 @@ function login() {
 
 }
 
+function regCompleted() {
+    $("<h3></h3>").text("Rekisteröituminen onnistui. ").appendTo("#welcome");
+    welcome();
+}
+
 function welcome() {
     $("<h3></h3>").text("Tervetuloa " + user.value + "!").appendTo("#welcome");
     // return "Tervetuloa " + user;
 }
+
 
 function logOut() {
     
