@@ -1,3 +1,8 @@
+/*
+ * Login
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
+ */
+
 var loginMap = new Map();
 var user;
 var pass;
@@ -81,9 +86,13 @@ function loginAsLastUser() {
     login();
 }
 
-function welcome(user) {
-    $("<h3></h3>").text("Tervetuloa " + user).prependTo("#logout");
-    // return "Tervetuloa " + user;
+function regCompleted() {
+    $("<h3></h3>").text("Rekisteröituminen onnistui. ").appendTo("#welcome");
+    welcome();
+}
+
+function welcome() {
+    $("<h3></h3>").text("Tervetuloa " + user.value + "!").appendTo("#welcome");
 }
 
 function logOut() {

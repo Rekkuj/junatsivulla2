@@ -1,3 +1,8 @@
+/*
+ * Cookies
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
+ */
+
 var myCookies = {};
 myCookies = document.cookie;
 console.log(myCookies);

@@ -1,3 +1,8 @@
+/*
+ * caesar
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
+ */
+
 var encrypt = function(plaintext, shiftAmount) {
     var ciphertext = "";
     for(var i = 0; i < plaintext.length; i++) {

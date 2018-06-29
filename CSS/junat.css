@@ -1,3 +1,7 @@
+/*
+ * CSS
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
+ */
 
 body {
     width: 90%;
@@ -40,8 +44,6 @@ img {
 }
 
 .logoutbutton {
-    display: flex;
-    justify-content: flex-end;
     background-color: #AC1556;
     margin-right: 2px;
     border-radius: 8px;
@@ -65,6 +67,14 @@ h1 {
     font-family: Arial;
 }
 
+h3 {
+    color: #AC1556;
+    text-align: right;
+    margin-right: 5px;
+    border-radius: 12px;
+    font-family: Arial;
+}
+
 h4 {
     color: black;
     margin-top: 5px;
@@ -78,6 +88,7 @@ fieldset {
     border-width:7px;
     border-style: double;
     vertical-align: middle;
+    margin-top: 7px;
     margin-left: 2px;
     border-radius: 12px;
     padding-left: 20px;
@@ -132,21 +143,28 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 }
 
 .switch {
-    background-color: #E42376;
-    border-radius: 12px;
-    height: 45px;
-    align-content: center;
-}
-
-.switch:hover {
-    background-color: lightgrey;
+    background-color: #AC1556;
     border-radius: 12px;
     height: 40px;
     align-content: center;
+    conte: center;
+}
+
+.switch:hover {
+    background-color: #E42376;
+    border-radius: 12px;
+    height: 40px;
+    align-content: center;
+    transform: scale(1.05, 1.05);
+    -moz-transform: scale(1.05, 1.05);
+    -ms-transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    -o-transform: scale(1.05, 1.05);
 }
 
 .input {
     border-color: #AC1556;
+    border-width:2px;
     width: 200px;
     height: 30px;
     margin-top: 2px;
@@ -155,8 +173,8 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 
 .inputdate {
     border-color: #AC1556;
-    width: 120px;
-    height: 23px;
+    width: 125px;
+    height: 26px;
     margin-top: 2px;
     margin-bottom: 5px;
     font-family: Arial;
@@ -164,8 +182,8 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 
 .inputtime {
     border-color: #AC1556;
-    width: 120px;
-    height: 23px;
+    width: 90px;
+    height: 26px;
     margin-top: 2px;
     margin-bottom: 5px;
     font-family: Arial;
@@ -173,7 +191,7 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 
 a:link {
     color: #AC1556;
-    alignment: center;
+    margin-left: 20px;
     font-size: large;
     font-family: Arial;
 }
@@ -181,7 +199,7 @@ a:link {
 .bye {
     background-color: #AC1556;
     color: white;
-    text-align: center;
+    text-align: left;
     margin-top: 3px;
     margin-bottom: 7px;
     border-color: white;
@@ -205,6 +223,7 @@ a:link {
 }
 
 footer {
+    margin-top: 8px;
     font-size: small;
     font-weight: bolder;
     text-align: center;

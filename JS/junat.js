@@ -1,3 +1,8 @@
+/*
+ * Trains
+ * @author Miika Huhtanen, Elmo Visuri, Reija Jokinen
+ */
+
 var listOfTrains = document.getElementById("trainlist");
 var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
@@ -249,7 +254,7 @@ function printTableRow(idouter, train, i, startingIndex) {
     $("<ul></ul>", {id: trainId}).addClass("hide").appendTo(document.getElementById(idouter));
 
 
-    for (var j = startingIndex + 1; j < train.timeTableRows.length; j = j + 2) {
+    for (var j = startingIndex; j < train.timeTableRows.length; j = j + 2) {
 
         if (stationShortCodes.indexOf(train.timeTableRows[j].stationShortCode) < 0) {
             continue;
@@ -262,6 +267,14 @@ function printTableRow(idouter, train, i, startingIndex) {
         var index = stationShortCodes.indexOf(stationCode);
         var departureTime = new Date(train.timeTableRows[j].scheduledTime);
 
+        if (train.timeTableRows[j].stationShortCode === stationInfo[fromSt.value].shortCode) {
+            $("<li></li>").append(stationNames[index]
+                + ": "
+                + departureTime.toLocaleTimeString('fi', timeSettings))
+                .appendTo(document.getElementById(trainId));
+            j--;
+            continue;
+        }
 
         if (train.timeTableRows[j].stationShortCode === stationInfo[toSt.value].shortCode) {
             $("<li></li>").append(stationNames[index]

@@ -1,3 +1,6 @@
+<!--Index-->
+<!--@author Miika Huhtanen, Elmo Visuri, Reija Jokinen-->
+
 <!DOCTYPE html>
 <html lang="fi">
 
@@ -14,7 +17,7 @@
 <!--<body>-->
 <body onload=loadCookies(),getOldUsers(),checkLastUser()>
 
-<img src="../mer_300.png">
+<img src="../IMAGES/mer_300.png">
 
 <div id="login" class="login">
     <input type="text" id="user" placeholder="Käyttäjätunnus">
@@ -24,7 +27,9 @@
 </div>
 
 <div id="logout" class="hide">
-    <input type="button" class="logoutbutton" value="Kirjaudu ulos" onclick="logOut()">
+    <input type="button" class="logoutbutton" onclick="logout()" value="Kirjaudu ulos">
+</div>
+<div id="welcome">
 </div>
 
 <h1>Juna-aikataulu</h1>
@@ -35,17 +40,20 @@
         <select id="fromSt" class="input"></select>
         <input id ="date" type = date class="inputdate">
         <input id ="time" type = time class="inputtime">
+        <br>
+        <button class = "switch" onclick="switshFromTo()" onmouseover="switchImg()" onmouseout="switchImgBack()">
+            <img id = "arrows" src="../IMAGES/arrows_w.png" height=35px>
+        </button>
 
         <h4>Pääteasema</h4>
         <select id="toSt" class="input"></select>
     </div>
+
     <div>
-        <button type=button onclick="getTrains(), saveCookies(), showTrainlist(),writeUserFile()" value="getTrains">Hae junat</button>
-        <button type=button onclick="resetStations(), hideTrainlist(), deleteCookies(),writeUserFile()">Tyhjennä</button>
+        <button type=button onclick="getTrains(), saveCookies(), showTrainlist(), writeUserFile()" value="getTrains">Hae junat</button>
+        <button type=button onclick="hideTrainlist(), deleteCookies(), writeUserFile(), resetStations()">Tyhjennä</button>
     </div>
 </fieldset>
-
-<br>
 
 <fieldset id="trlist" class="hide">
     <div id="trainlist" class="trainlist"></div>
