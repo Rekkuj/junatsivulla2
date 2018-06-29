@@ -32,5 +32,5 @@ function switchImg(){
 }
 
 function switchImgBack(){
-    $("#arrows").attr('src','../IMAGES/arrows.png');
+    $("#arrows").attr('src','../IMAGES/arrows_w.png');
 }

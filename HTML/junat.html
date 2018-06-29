@@ -15,19 +15,19 @@
 </head>
 
 <!--<body>-->
-<body onload=loadCookies()>
+<body onload=loadCookies(),getOldUsers(),checkLastUser()>
 
 <img src="../IMAGES/mer_300.png">
 
 <div id="login" class="login">
     <input type="text" id="user" placeholder="Käyttäjätunnus">
     <input type="password" id="pass" placeholder="Salasana">
-    <input type="button" class="loginbutton" onclick="login()" value="Kirjaudu sisään">
-    <input type="button" class="loginbutton" onclick="setNewUserToMap()" value="Rekisteröidy">
+    <input type="button" class="loginbutton" onclick="saveCookies(),login()" value="Kirjaudu sisään">
+    <input type="button" class="loginbutton" onclick="saveCookies(),setNewUserToMap(),writeUserFile()" value="Rekisteröidy">
 </div>
 
 <div id="logout" class="hide">
-    <input type="button" class="logoutbutton" onclick="logout()" value="Kirjaudu ulos">
+    <input type="button" class="logoutbutton" onclick=logOut() value="Kirjaudu ulos">
 </div>
 <div id="welcome">
 </div>
@@ -42,7 +42,7 @@
         <input id ="time" type = time class="inputtime">
         <br>
         <button class = "switch" onclick="switshFromTo()" onmouseover="switchImg()" onmouseout="switchImgBack()">
-            <img id = "arrows" src="../IMAGES/arrows.png" height=35px>
+            <img id = "arrows" src="../IMAGES/arrows_w.png" height=35px>
         </button>
 
         <h4>Pääteasema</h4>
@@ -50,8 +50,8 @@
     </div>
 
     <div>
-        <button type=button onclick="getTrains(), saveCookies(), showTrainlist()" value="getTrains">Hae junat</button>
-        <button type=button onclick="resetStations(), hideTrainlist()">Tyhjennä</button>
+        <button type=button onclick="getTrains(), saveCookies(), showTrainlist(), writeUserFile()" value="getTrains">Hae junat</button>
+        <button type=button onclick="hideTrainlist(), deleteCookies(), writeUserFile(), resetStations()">Tyhjennä</button>
     </div>
 </fieldset>
 
