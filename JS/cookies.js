@@ -70,7 +70,6 @@ function resetStations() {
 }
 
 function getFromStCookie() {
-
     var fromSt = myCookies["_fromSt"];
     console.log(fromSt);
     return fromSt;

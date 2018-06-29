@@ -140,9 +140,7 @@ req2.onreadystatechange = function () {
     }
 }
 
-/** Function get's trains between two stations
- *
- * */
+/** Function get's trains between two stations */
 function getTrains() {
     var from = stationInfo[fromSt.value].shortCode;
     var to = stationInfo[toSt.value].shortCode;
