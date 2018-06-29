@@ -145,6 +145,7 @@ button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutt
 .switch {
     background-color: #AC1556;
     border-radius: 12px;
+    margin-left: 65px;
     height: 40px;
     align-content: center;
     conte: center;

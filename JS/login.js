@@ -36,7 +36,7 @@ function setNewUserToMap() {
     // console.log("User and pass saved")
     // console.log(loginMap);
     // console.log(loginMap.toString());
-    login();
+    registration();
     // console.log("User and password fields")
 }
 
@@ -74,6 +74,35 @@ function login() {
 
 }
 
+function registration() {
+    var user = myCookies["_lastUser"];
+    console.log("Viimeisin käyttäjä: " + user);
+    console.log(users);
+    if(user === "undefined") {return;}
+    console.log("Tänne ei pitäisi päästä!");
+    if (users == null) {
+        alert("Käyttäjää ei löydy")
+        return;
+    }
+    var pass = myCookies["_lastPass"];
+    var kw = users[user];
+    console.log(kw);
+    console.log(pass);
+    console.log(kw === pass);
+
+    // var kwc = kw.caesar();
+
+    if (kw === pass) {
+        console.log("Login ok");
+        regCompleted(user);
+        showWelcome();
+    } else {
+        console.log("Something went wrooong");
+        alert("Tarkista nimi ja salasana");
+    }
+    resetStations();
+}
+
 function loginAsLastUser() {
     var lu = getLastUser();
     console.log("last user" + lu);
@@ -86,13 +115,12 @@ function loginAsLastUser() {
     login();
 }
 
-function regCompleted() {
-    $("<h3></h3>").text("Rekisteröituminen onnistui. ").appendTo("#welcome");
-    welcome();
+function regCompleted(user) {
+    $("<h3></h3>").text("Rekisteröituminen onnistui. Tervetuloa " + user + "!").prependTo("#welcome");
 }
 
-function welcome() {
-    $("<h3></h3>").text("Tervetuloa " + user.value + "!").appendTo("#welcome");
+function welcome(user) {
+    $("<h3></h3>").text("Tervetuloa " + user + "!").appendTo("#welcome");
 }
 
 function logOut() {

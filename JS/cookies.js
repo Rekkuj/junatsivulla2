@@ -64,8 +64,18 @@ function loadCookies() {
 }
 
 function resetStations() {
-    fromSt.value = 'Valitse asema';
-    toSt.value = 'Valitse asema';
+        $("<option></option>")
+            .text("Valitse asema")
+            .attr('selected', true)
+            .attr('hidden', 'hidden')
+            .prop('disabled', true)
+            .appendTo(fromSt);
+        $("<option></option>")
+            .text("Valitse asema")
+            .attr('selected', true)
+            .attr('hidden', 'hidden')
+            .prop('disabled', true)
+            .appendTo(toSt);
     while (listOfTrains.firstChild) {
         listOfTrains.removeChild(listOfTrains.firstChild);
     }
