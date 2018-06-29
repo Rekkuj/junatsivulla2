@@ -21,7 +21,7 @@ function hideLogin() {
     $("#login").addClass("hide");
 }
 
-function switshFromTo(){
+function switchFromTo(){
     var temp = document.getElementById("fromSt").value;
     document.getElementById("fromSt").value = document.getElementById("toSt").value;
     document.getElementById("toSt").value = temp;
