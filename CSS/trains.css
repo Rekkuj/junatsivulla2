@@ -132,7 +132,8 @@ button {
     align-content: center;
 }
 
-button:hover, .loginbutton:hover, .logoutbutton:hover, button:active, .loginbutton:active, .logoutbutton:active {
+button:hover, .loginbutton:hover, .logoutbutton:hover,
+button:active, .loginbutton:active, .logoutbutton:active {
     background-color: #E42376;
     color: black;
     transform: scale(1.05, 1.05);

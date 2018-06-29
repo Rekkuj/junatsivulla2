@@ -10,12 +10,8 @@ var fromSt = document.getElementById("fromSt");
 var toSt = document.getElementById("toSt");
 var users = {};
 console.log(users);
-// var lastUser = document.getElementById("user");
-// var lastPass = document.getElementById("pass");
-
 
 function saveCookies() {
-    // resetStations();
     myCookies["_fromSt"] = document.getElementById("fromSt").value;
     myCookies["_toSt"] = document.getElementById("toSt").value;
     myCookies["_lastUser"] = document.getElementById("user").value;
@@ -26,7 +22,7 @@ function saveCookies() {
 
     document.cookie = "";
 
-    var expires = new Date(Date.now()+60*60*1000).toString();
+    var expires = new Date(Date.now()+24*60*60*1000).toString();
 
     console.log("Expiring date")
     var cookieString = "";
@@ -44,13 +40,6 @@ function loadCookies() {
 
     console.log(document.cookie);
 
-
-    // if (myCookies === undefined || myCookies.length == null) {
-    //     console.log("TThheeeeeeeere is noooooooooo coookies")
-    //     // resetStations();
-    //     return false;
-    // }
-
     myCookies = {};
     var kv = document.cookie.split(";");
     for (var id in kv) {
@@ -59,8 +48,6 @@ function loadCookies() {
     }
 
     console.log("Cookie sisältää: " + myCookies.value);
-    // document.getElementById("fromSt").value = myCookies["_fromSt"];
-    // document.getElementById("toSt").value = myCookies ["_toSt"];
 }
 
 function resetStations() {
@@ -128,7 +115,6 @@ function checkLastUser() {
     loginAsLastUser();
 }
 
-
 function deleteCookies() {
     console.log("Cookies will be removed")
 
@@ -137,7 +123,7 @@ function deleteCookies() {
     console.log("Minnun keksit" + myCookies["_lastUser"]);
     document.cookie = "";
 
-    var expires = new Date(Date.now()+60*60*1000).toString();
+    var expires = new Date(Date.now()+24*60*60*1000).toString();
 
     console.log("Expiring date")
     var cookieString = "";
@@ -148,39 +134,10 @@ function deleteCookies() {
     console.log("Dokumentin keksit: " + document.cookie);
     console.log("Cookies saved");
     console.log("Minun keksit" + myCookies);
-// for (var i = 0; i < myCookies.length; i++) {
-//     delete myCookies.v
 }
-//     while (listOfTrains.firstChild) {
-//         listOfTrains.removeChild(listOfTrains.firstChild);
-//     }
-//     //window.location = "";
-//     console.log("Cookies removed")
-//     console.log(myCookies)
-// }
 
 function writeUserFile() {
-
     localStorage.setItem('users',JSON.stringify(users));
-
-    // var fileName = "../users.txt";
-    // // var file = new File(fileName);
-    // var fh = fopen(fileName,3);
-    //
-    // if (fh!=-1){
-    //     for (var [user, pass] of loginMap) {
-    //         var line = user + " : " + pass;
-    //         fwrite(fh, line);
-    //     }
-    //     fclose(fh);
-    // }
-
-    //
-    // for (var [user, pass] of loginMap){
-    //     var line = user + " : " + pass;
-    //     file.writeln(line);
-    // }
-    // file.close();
 }
 
 function getOldUsers(){

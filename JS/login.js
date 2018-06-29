@@ -7,18 +7,14 @@ var loginMap = new Map();
 var user;
 var pass;
 
-
 function setNewUserToMap() {
     user = document.getElementById("user").value;
     pass = document.getElementById("pass").value;
 
     console.log(user + pass);
     console.log(users);
-    // if (users == null) {
-    //     users[user] = pass;
-    // }
 
-    if(user in users){
+    if (user in users) {
         console.log("User is already used");
         return window.confirm("Käyttäjänimi on jo käytössä, ole hyvä ja vaihda nimi.")
     }
@@ -37,7 +33,6 @@ function setNewUserToMap() {
     // console.log(loginMap);
     // console.log(loginMap.toString());
     registration();
-    // console.log("User and password fields")
 }
 
 function clearNameAndPass() {
@@ -49,7 +44,9 @@ function login() {
     var user = myCookies["_lastUser"];
     console.log("Viimeisin käyttäjä: " + user);
     console.log(users);
-    if(user === "undefined") {return;}
+    if (user === "undefined") {
+        return;
+    }
     console.log("Tänne ei pitäisi päästä!");
     if (users == null) {
         alert("Käyttäjää ei löydy")
@@ -71,14 +68,15 @@ function login() {
         console.log("Something went wrooong");
         alert("Tarkista nimi ja salasana");
     }
-
 }
 
 function registration() {
     var user = myCookies["_lastUser"];
     console.log("Viimeisin käyttäjä: " + user);
     console.log(users);
-    if(user === "undefined") {return;}
+    if (user === "undefined") {
+        return;
+    }
     console.log("Tänne ei pitäisi päästä!");
     if (users == null) {
         alert("Käyttäjää ei löydy")

@@ -24,8 +24,6 @@ var stationInfo = {};
  * Lists: stationNames and stationShortCodes.
  * Object: key - Station name, properties - shortCode, longitude, latitude, stationCode (numeric)
  * */
-
-
 function getAllStations() {
     req.open('GET', 'https://rata.digitraffic.fi/api/v1/metadata/stations', true);
     req.send(null);
@@ -145,7 +143,6 @@ req2.onreadystatechange = function () {
 /** Function get's trains between two stations
  *
  * */
-
 function getTrains() {
     var from = stationInfo[fromSt.value].shortCode;
     var to = stationInfo[toSt.value].shortCode;
@@ -165,7 +162,6 @@ function getTrains() {
 }
 
 /** Add a list of trains between two spesific stations to HTML-page */
-
 function addToList(table) {
 
     var lengthOrMax = Math.min(table.length, 5);
@@ -248,7 +244,6 @@ function addToList(table) {
 }
 
 /** Print timetable of a train to the HTML-page */
-
 function printTableRow(idouter, train, i, startingIndex) {
     var trainId = train.trainNumber + train.trainType + i;
     $("<ul></ul>", {id: trainId}).addClass("hide").appendTo(document.getElementById(idouter));
