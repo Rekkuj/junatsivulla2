@@ -79,6 +79,7 @@ function resetStations() {
     while (listOfTrains.firstChild) {
         listOfTrains.removeChild(listOfTrains.firstChild);
     }
+    setDateAndTime();
 }
 
 function getFromStCookie() {

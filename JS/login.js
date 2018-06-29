@@ -116,7 +116,7 @@ function loginAsLastUser() {
 }
 
 function regCompleted(user) {
-    $("<h3></h3>").text("Rekisteröituminen onnistui. Tervetuloa " + user + "!").prependTo("#welcome");
+    $("<h3></h3>").text("Rekisteröityminen onnistui. Tervetuloa " + user + "!").prependTo("#welcome");
 }
 
 function welcome(user) {
